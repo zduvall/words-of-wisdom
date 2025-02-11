@@ -35,7 +35,6 @@ const IndexPage = () => {
       />
       {sortedQuotes.map((q, idx) => (
         <div key={idx} className='mb-4'>
-          {' '}
           {/* Margin between quote cards */}
           <QuoteCard data={q} reveal={true} />
           <Link
