@@ -21,7 +21,7 @@ const Home = () => {
       {/* Title styling */}
       <QuoteCard data={quotes[index]} reveal={true} />
       <button
-        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4' // Button styling
+        className='accent-background-hover hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 cursor-pointer' // Button styling
         onClick={newRandomQuote}
       >
         New Random Quote

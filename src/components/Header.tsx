@@ -7,7 +7,7 @@ interface IHeaderProps {
 
 const Header = ({ darkMode, setDarkMode }: IHeaderProps) => {
   return (
-    <header className='bg-blue-600 p-4 flex justify-between items-center'>
+    <header className='accent-background p-4 flex justify-between items-center'>
       <div>
         <Link to='/' className='text-white text-xl font-bold'>
           Words of Wisdom
