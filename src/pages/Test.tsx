@@ -7,15 +7,6 @@ interface ITestProps {
   startingIdx?: number;
 }
 
-const shuffleArray = <T extends unknown>(array: T[]): T[] => {
-  const arr = array.slice();
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-};
-
 const Test = ({ shuffle, startingIdx = 0 }: ITestProps) => {
   const quotes: IQuote[] = quotesData;
   const [currentIndex, setCurrentIndex] = useState<number>(startingIdx);
