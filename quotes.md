@@ -10,17 +10,18 @@ title: Quotes Index
 
 <script>
   // Render quotes from the global quotes variable
-  function renderQuotes(quotes) {
+function renderQuotes(quotes) {
     const container = document.getElementById('quotes-list');
     container.innerHTML = "";
     quotes.forEach(function(quote, index) {
+      const relativeUrl = "{{ '/quote.html' | relative_url }}";
       container.innerHTML += `
         <div class="box">
           <p class="quote">“${quote.quote}”</p>
           <p class="author">— ${quote.author}</p>
           <p class="source"><em>${quote.source}</em></p>
           ${quote.hint ? `<p class="hint"><small>Hint: ${quote.hint}</small></p>` : ''}
-          <p><a href="{{ '/quote.html?id=' | append: index | relative_url }}" class="button is-small is-link">View</a></p>
+          <p><a href="${relativeUrl}?id=${index}" class="button is-small is-link">View</a></p>
         </div>
       `;
     });
