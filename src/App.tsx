@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import IndexPage from './pages/Index';
+import Quotes from './pages/Quotes';
 import Quote from './pages/Quote';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -27,7 +27,7 @@ const App = () => {
         <div className='container mx-auto'>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/quotes' element={<IndexPage />} />
+            <Route path='/quotes' element={<Quotes />} />
             <Route path='/quotes/:id' element={<Quote />} />
             <Route path='/test/:id?' element={<Quote shuffle />} />
           </Routes>

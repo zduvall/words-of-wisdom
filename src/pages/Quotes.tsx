@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import QuoteCard, { IQuote } from '../components/QuoteCard';
 import quotesData from '../data/quotes.json';
 
-const IndexPage = () => {
+const Quotes = () => {
   const [query, setQuery] = useState<string>('');
   const quotes: IQuote[] = quotesData;
 
@@ -49,4 +49,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default Quotes;
