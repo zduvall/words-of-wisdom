@@ -24,11 +24,6 @@ a {
   color: var(--link-color);
 }
 
-/* Styling for quote cards */
-.quote-card {
-  margin-bottom: 1rem;
-}
-
 .quote {
   font-size: 1.5rem;
   font-weight: bold;

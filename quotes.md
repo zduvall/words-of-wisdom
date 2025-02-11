@@ -15,7 +15,7 @@ title: Quotes Index
     container.innerHTML = "";
     quotes.forEach(function(quote, index) {
       container.innerHTML += `
-        <div class="box quote-card">
+        <div class="box">
           <p class="quote">“${quote.quote}”</p>
           <p class="author">— ${quote.author}</p>
           <p class="source"><em>${quote.source}</em></p>

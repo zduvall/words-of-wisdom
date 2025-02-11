@@ -18,7 +18,7 @@ title: Home
     const randomIndex = Math.floor(Math.random() * window.quotes.length);
     const quote = window.quotes[randomIndex];
     container.innerHTML = `
-      <div class="box quote-card">
+      <div class="box">
         <p class="quote">“${quote.quote}”</p>
         <p class="author">— ${quote.author}</p>
         <p class="source"><em>${quote.source}</em></p>

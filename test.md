@@ -33,7 +33,7 @@ title: Test
     const container = document.getElementById('test-quote-container');
     const quote = shuffledQuotes[currentIndex];
     container.innerHTML = `
-      <div class="box quote-card" id="testQuoteCard" style="cursor: pointer;">
+      <div class="box" id="testQuoteCard" style="cursor: pointer;">
         <div class="quote-hint">
           <p class="hint">${quote.hint}</p>
         </div>

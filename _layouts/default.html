@@ -23,7 +23,12 @@
   <body>
     {% include header.html %}
     <main class="section">
-      <div class="container">{{ content }}</div>
+      <div
+        class="container"
+        style="display: flex; flex-direction: column; gap: 1rem"
+      >
+        {{ content }}
+      </div>
     </main>
     {% include footer.html %}
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
