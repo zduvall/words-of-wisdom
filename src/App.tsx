@@ -17,7 +17,7 @@ const App = () => {
   );
 
   useEffect(() => {
-    document.body.classList.toggle('dark-mode', darkMode); // Updated class name
+    document.body.classList.toggle('dark-mode', darkMode);
     localStorage.setItem('darkMode', darkMode.toString());
   }, [darkMode]);
 
