@@ -1,0 +1,42 @@
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import IndexPage from './pages/Index';
+import Test from './pages/Test';
+import Quote from './pages/Quote';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+// @ts-expect-error - doesn't recognize env on import meta
+const basename = import.meta.env.BASE_URL;
+
+const App: React.FC = () => {
+  // Dark mode state: load from localStorage if available.
+  const [darkMode, setDarkMode] = useState<boolean>(
+    localStorage.getItem('darkMode') === 'true'
+  );
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-mode', darkMode);
+    localStorage.setItem('darkMode', darkMode.toString());
+  }, [darkMode]);
+
+  return (
+    <BrowserRouter basename={basename}>
+      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+      <main className='section'>
+        <div className='container'>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/index' element={<IndexPage />} />
+            <Route path='/test' element={<Test />} />
+            <Route path='/quote/:id' element={<Quote />} />
+          </Routes>
+        </div>
+      </main>
+      <Footer />
+    </BrowserRouter>
+  );
+};
+
+export default App;

@@ -1,6 +1,0 @@
-.bundle
-.jekyll-cache
-node_modules
-vendor/bundle
-*.log
-.DS_Store

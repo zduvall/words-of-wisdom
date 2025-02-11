@@ -1,25 +1,37 @@
 # Words of Wisdom
 
-**Words of Wisdom** is a simple, modern Jekyll-based website designed to help you memorize quotes. The site features a home page with a random quote (with a button for a new random quote), an index page with a searchable list of quotes, an interactive test page, and individual quote pages—all built using client‑side rendering.
+**Words of Wisdom** is a React app built with TypeScript and Vite. It helps you memorize quotes by offering:
 
-## Running Locally with Docker
+- A **Home** page that displays a random quote (with a “New Random Quote” button),
+- An **Index** page with a searchable, sorted list of quotes,
+- A **Test** page where you can toggle to reveal quote details and navigate through quotes in random order,
+- And dedicated **Quote** pages (accessible via `/quote/:id`).
 
-This project is containerized so you don’t need to install Ruby or Jekyll locally. To run the site in a Docker container:
+## Running Locally
 
-1. **Build and start the container:**  
-   Open a terminal in the project directory and run:
+1. **Install Dependencies**
 
    ```bash
-   docker compose up --build
+   npm install
    ```
 
-2. **View the site:**  
-   Open your browser and navigate to [http://localhost:4000](http://localhost:4000). Changes you make on your host will be tracked live inside the container.
+2. **Start the Dev Server**
+
+   ```bash
+   npm run dev
+   ```
+
+   Open your browser to [http://localhost:5173](http://localhost:5173) (or the port indicated in your terminal). Changes will update live.
 
 ## Deploying to GitHub Pages
 
-Since this is a Jekyll site, you can deploy it on GitHub Pages by simply pushing your repository to GitHub. Then:
+This app is configured for GitHub Pages:
 
-1. In your repository’s **Settings**, go to the **GitHub Pages** section.
-2. Select the branch (typically `main`) as your source.
-3. GitHub Pages will build and serve your site automatically.
+- The Vite config sets the base path to `/words-of-wisdom/`.
+- To build the project, run:
+
+  ```bash
+  npm run build
+  ```
+
+- Deploy the contents of the generated `dist` folder to GitHub Pages (for example, using the [gh-pages](https://www.npmjs.com/package/gh-pages) package or your preferred method).
