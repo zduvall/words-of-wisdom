@@ -8,12 +8,14 @@ const Quote = () => {
   const quotes: IQuote[] = quotesData;
 
   if (isNaN(index) || index < 0 || index >= quotes.length) {
-    return <p>Quote not found.</p>;
+    return <p className='text-xl text-center mt-8'>Quote not found.</p>; // Styled "not found" message
   }
 
   return (
-    <div>
-      <h1 className='title'>Quote Detail</h1>
+    <div className='container mx-auto p-4'>
+      {' '}
+      {/* Container and padding */}
+      <h1 className='text-3xl font-bold mb-4'>Quote Detail</h1> {/* Title */}
       <QuoteCard data={quotes[index]} reveal={true} />
     </div>
   );

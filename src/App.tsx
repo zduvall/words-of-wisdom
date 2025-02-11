@@ -17,15 +17,15 @@ const App = () => {
   );
 
   useEffect(() => {
-    document.body.classList.toggle('dark-mode', darkMode);
+    document.body.classList.toggle('dark-mode', darkMode); // Updated class name
     localStorage.setItem('darkMode', darkMode.toString());
   }, [darkMode]);
 
   return (
     <BrowserRouter basename={basename}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      <main className='section'>
-        <div className='container'>
+      <main className='py-8'>
+        <div className='container mx-auto'>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/index' element={<IndexPage />} />

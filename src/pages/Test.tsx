@@ -35,21 +35,36 @@ const Test = () => {
   };
 
   return (
-    <div>
-      <h1 className='title'>Test Your Memory</h1>
+    <div className='container mx-auto p-4'>
+      {' '}
+      {/* Container and padding */}
+      <h1 className='text-3xl font-bold mb-4'>Test Your Memory</h1>{' '}
+      {/* Title */}
       {currentQuote && (
-        <div onClick={() => setRevealed(!revealed)}>
+        <div onClick={() => setRevealed(!revealed)} className='cursor-pointer'>
+          {' '}
+          {/* Clickable quote */}
           <QuoteCard data={currentQuote} reveal={revealed} />
         </div>
       )}
-      <div className='buttons has-addons is-centered'>
-        <button className='button' onClick={goPrev}>
+      <div className='flex justify-center mt-4'>
+        {' '}
+        {/* Button container */}
+        <button
+          className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-2' // Previous button
+          onClick={goPrev}
+        >
           Previous
         </button>
-        <span className='button is-static'>
+        <span className='bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded'>
+          {' '}
+          {/* Quote count */}
           Quote {currentIndex + 1} of {shuffled.length}
         </span>
-        <button className='button' onClick={goNext}>
+        <button
+          className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2' // Next button
+          onClick={goNext}
+        >
           Next
         </button>
       </div>

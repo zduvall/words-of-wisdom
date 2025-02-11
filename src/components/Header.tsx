@@ -7,57 +7,29 @@ interface IHeaderProps {
 
 const Header = ({ darkMode, setDarkMode }: IHeaderProps) => {
   return (
-    <header>
-      <nav
-        className='navbar is-primary'
-        role='navigation'
-        aria-label='main navigation'
-      >
-        <div className='navbar-brand'>
-          <Link className='navbar-item' to='/'>
-            Words of Wisdom
-          </Link>
-          <a
-            role='button'
-            className='navbar-burger'
-            aria-label='menu'
-            aria-expanded='false'
-            data-target='navbarMenu'
-            onClick={(e) => {
-              const target = document.getElementById('navbarMenu');
-              target?.classList.toggle('is-active');
-              (e.currentTarget as HTMLElement).classList.toggle('is-active');
-            }}
-          >
-            <span aria-hidden='true'></span>
-            <span aria-hidden='true'></span>
-            <span aria-hidden='true'></span>
-          </a>
-        </div>
-        <div id='navbarMenu' className='navbar-menu'>
-          <div className='navbar-start'>
-            <Link className='navbar-item' to='/'>
-              Home
-            </Link>
-            <Link className='navbar-item' to='/index'>
-              Index
-            </Link>
-            <Link className='navbar-item' to='/test'>
-              Test
-            </Link>
-          </div>
-          <div className='navbar-end'>
-            <div className='navbar-item'>
-              <button
-                className='button is-small'
-                onClick={() => setDarkMode(!darkMode)}
-              >
-                Toggle Dark Mode
-              </button>
-            </div>
-          </div>
-        </div>
+    <header className='bg-blue-600 p-4 flex justify-between items-center'>
+      <div>
+        <Link to='/' className='text-white text-xl font-bold'>
+          Words of Wisdom
+        </Link>
+      </div>
+      <nav>
+        <Link to='/' className='text-white mr-4'>
+          Home
+        </Link>
+        <Link to='/index' className='text-white mr-4'>
+          Index
+        </Link>
+        <Link to='/test' className='text-white mr-4'>
+          Test
+        </Link>
       </nav>
+      <button
+        className='bg-white text-blue-600 px-2 py-1 rounded'
+        onClick={() => setDarkMode(!darkMode)}
+      >
+        Toggle Dark Mode
+      </button>
     </header>
   );
 };
