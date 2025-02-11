@@ -38,7 +38,7 @@ const IndexPage = () => {
           {/* Margin between quote cards */}
           <QuoteCard data={q} reveal={true} />
           <Link
-            to={`/quote/?index=${idx}`}
+            to={`/quotes/${idx}`}
             className='accent-background-hover text-white font-bold py-2 px-4 rounded text-sm mt-2 inline-block' // Link button
           >
             View

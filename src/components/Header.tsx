@@ -17,7 +17,7 @@ const Header = ({ darkMode, setDarkMode }: IHeaderProps) => {
         <Link to='/' className='text-white mr-4'>
           Home
         </Link>
-        <Link to='/index' className='text-white mr-4'>
+        <Link to='/quotes' className='text-white mr-4'>
           Index
         </Link>
         <Link to='/test' className='text-white mr-4'>

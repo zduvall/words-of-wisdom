@@ -27,9 +27,9 @@ const App = () => {
         <div className='container mx-auto'>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/index' element={<IndexPage />} />
-            <Route path='/test' element={<Quote shuffle />} />
-            <Route path='/quote' element={<Quote />} />
+            <Route path='/quotes' element={<IndexPage />} />
+            <Route path='/quotes/:id' element={<Quote />} />
+            <Route path='/test/:id?' element={<Quote shuffle />} />
           </Routes>
         </div>
       </main>

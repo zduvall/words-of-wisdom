@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import quotesData from '../data/quotes.json';
 import QuoteCard, { IQuote } from '../components/QuoteCard';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface ITestProps {
   shuffle?: boolean;
@@ -14,7 +14,7 @@ const Quote = ({ shuffle = false, initialIndex = 0 }: ITestProps) => {
     index: currentIndex,
     incrementIndex,
     decrementIndex,
-  } = useIndexFromSearchParams({ initialIndex, length: quotes.length });
+  } = useIndexFromPath({ initialIndex, length: quotes.length });
 
   const [revealed, setRevealed] = useState<boolean>(false);
 
@@ -133,46 +133,56 @@ function createIdentityMap(n: number): Map<number, number> {
 // hook
 // =============================================================================
 
-interface UseIndexFromSearchParamsProps {
+interface UseIndexFromPathProps {
   initialIndex?: number;
   length?: number; // Add length prop
 }
 
-interface UseIndexFromSearchParamsResult {
+interface UseIndexFromPathResult {
   index: number;
   incrementIndex: () => void;
   decrementIndex: () => void;
 }
 
-function useIndexFromSearchParams({
+function useIndexFromPath({
   initialIndex = 0,
   length,
-}: UseIndexFromSearchParamsProps = {}): UseIndexFromSearchParamsResult {
-  const [searchParams, setSearchParams] = useSearchParams();
+}: UseIndexFromPathProps = {}): UseIndexFromPathResult {
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const getIndexFromParams = useCallback((): number => {
-    const indexParam = searchParams.get('index');
-    const parsedIndex = indexParam ? parseInt(indexParam, 10) : NaN;
+  const getIndexFromPath = useCallback((): number => {
+    const pathSegments = location.pathname.split('/');
+    const lastSegment = pathSegments[pathSegments.length - 1];
+    const parsedIndex = parseInt(lastSegment, 10);
     return isNaN(parsedIndex) ? initialIndex : parsedIndex;
-  }, [initialIndex, searchParams]);
+  }, [initialIndex, location.pathname]);
 
-  const currentIndex = getIndexFromParams();
+  const currentIndex = getIndexFromPath();
 
   const updateIndex = useCallback(
     (newIndex: number) => {
-      const newSearchParams = new URLSearchParams(searchParams);
-      newSearchParams.set('index', String(newIndex));
-      setSearchParams(newSearchParams, { replace: true });
+      const pathSegments = location.pathname.split('/');
+      // Remove the last segment if it's likely to be the old index
+      if (!isNaN(parseInt(pathSegments[pathSegments.length - 1], 10))) {
+        pathSegments.pop();
+      }
+      const basePath = pathSegments.join('/');
+      const newPath = `${basePath}/${newIndex}`;
+      navigate(newPath, { replace: true });
     },
-    [setSearchParams, searchParams]
+    [location.pathname, navigate]
   );
 
   useEffect(() => {
-    // set default index if index is not provided in the URL
-    if (!searchParams.has('index')) {
+    // set default index if last path segment is not a number
+    const pathSegments = location.pathname.split('/');
+    const lastSegment = pathSegments[pathSegments.length - 1];
+    console.log('lastSegment', lastSegment);
+    if (isNaN(parseInt(lastSegment, 10))) {
       updateIndex(initialIndex);
     }
-  }, [initialIndex, searchParams, updateIndex]);
+  }, [initialIndex, location.pathname, updateIndex]);
 
   const incrementIndex = useCallback(() => {
     let nextIndex = currentIndex + 1;
