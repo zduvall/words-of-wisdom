@@ -8,7 +8,7 @@ interface ITestProps {
   initialIndex?: number;
 }
 
-const Test = ({ shuffle = false, initialIndex = 0 }: ITestProps) => {
+const Quote = ({ shuffle = false, initialIndex = 0 }: ITestProps) => {
   const quotes: IQuote[] = quotesData;
   const {
     index: currentIndex,
@@ -74,7 +74,7 @@ const Test = ({ shuffle = false, initialIndex = 0 }: ITestProps) => {
   );
 };
 
-export default Test;
+export default Quote;
 
 // =============================================================================
 // Helpers

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import IndexPage from './pages/Index';
-import Test from './pages/Test';
+import Quote from './pages/Quote';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -28,8 +28,8 @@ const App = () => {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/index' element={<IndexPage />} />
-            <Route path='/test' element={<Test shuffle />} />
-            <Route path='/quote' element={<Test />} />
+            <Route path='/test' element={<Quote shuffle />} />
+            <Route path='/quote' element={<Quote />} />
           </Routes>
         </div>
       </main>
