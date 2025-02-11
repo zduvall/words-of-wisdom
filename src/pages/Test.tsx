@@ -41,11 +41,11 @@ const Test = () => {
       <h1 className='text-3xl font-bold mb-4'>Test Your Memory</h1>{' '}
       {/* Title */}
       {currentQuote && (
-        <div onClick={() => setRevealed(!revealed)} className='cursor-pointer'>
-          {' '}
-          {/* Clickable quote */}
-          <QuoteCard data={currentQuote} reveal={revealed} />
-        </div>
+        <QuoteCard
+          data={currentQuote}
+          reveal={revealed}
+          onToggle={() => setRevealed((prev) => !prev)}
+        />
       )}
       <div className='flex justify-center mt-4'>
         {' '}
