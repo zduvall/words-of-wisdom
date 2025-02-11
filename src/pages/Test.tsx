@@ -1,15 +1,21 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import quotesData from '../data/quotes.json';
 import QuoteCard, { IQuote } from '../components/QuoteCard';
+import { useSearchParams } from 'react-router-dom';
 
 interface ITestProps {
   shuffle: boolean;
-  startingIdx?: number;
+  initialIndex?: number;
 }
 
-const Test = ({ shuffle, startingIdx = 0 }: ITestProps) => {
+const Test = ({ shuffle, initialIndex = 0 }: ITestProps) => {
   const quotes: IQuote[] = quotesData;
-  const [currentIndex, setCurrentIndex] = useState<number>(startingIdx);
+  const {
+    index: currentIndex,
+    incrementIndex,
+    decrementIndex,
+  } = useIndexFromSearchParams({ initialIndex, length: quotes.length });
+
   const [revealed, setRevealed] = useState<boolean>(false);
 
   const indexMap = useMemo(
@@ -23,11 +29,13 @@ const Test = ({ shuffle, startingIdx = 0 }: ITestProps) => {
   const curQuote = quotes[indexMap.get(currentIndex) || 0];
 
   const goNext = () => {
-    setCurrentIndex((currentIndex + 1) % quotes.length);
+    // setCurrentIndex((currentIndex + 1) % quotes.length);
+    incrementIndex();
     setRevealed(false);
   };
   const goPrev = () => {
-    setCurrentIndex((currentIndex - 1 + quotes.length) % quotes.length);
+    // setCurrentIndex((currentIndex - 1 + quotes.length) % quotes.length);
+    decrementIndex();
     setRevealed(false);
   };
 
@@ -119,4 +127,68 @@ function createIdentityMap(n: number): Map<number, number> {
   }
 
   return identityMap;
+}
+
+// =============================================================================
+// hook
+// =============================================================================
+
+interface UseIndexFromSearchParamsProps {
+  initialIndex?: number;
+  length?: number; // Add length prop
+}
+
+interface UseIndexFromSearchParamsResult {
+  index: number;
+  incrementIndex: () => void;
+  decrementIndex: () => void;
+}
+
+function useIndexFromSearchParams({
+  initialIndex = 0,
+  length,
+}: UseIndexFromSearchParamsProps = {}): UseIndexFromSearchParamsResult {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const getIndexFromParams = useCallback((): number => {
+    const indexParam = searchParams.get('index');
+    const parsedIndex = indexParam ? parseInt(indexParam, 10) : NaN;
+    return isNaN(parsedIndex) ? initialIndex : parsedIndex;
+  }, [initialIndex, searchParams]);
+
+  const currentIndex = getIndexFromParams();
+
+  const updateIndex = useCallback(
+    (newIndex: number) => {
+      const newSearchParams = new URLSearchParams(searchParams);
+      newSearchParams.set('index', String(newIndex));
+      setSearchParams(newSearchParams, { replace: true });
+    },
+    [setSearchParams, searchParams]
+  );
+
+  useEffect(() => {
+    // set default index if index is not provided in the URL
+    if (!searchParams.has('index')) {
+      updateIndex(initialIndex);
+    }
+  }, [initialIndex, searchParams, updateIndex]);
+
+  const incrementIndex = useCallback(() => {
+    let nextIndex = currentIndex + 1;
+    if (length !== undefined && nextIndex >= length) {
+      nextIndex = 0; // Loop back to 0 if length is provided and index exceeds length
+    }
+    updateIndex(nextIndex);
+  }, [currentIndex, length, updateIndex]); // Add length as dependency
+
+  const decrementIndex = useCallback(() => {
+    updateIndex(Math.max(0, currentIndex - 1));
+  }, [currentIndex, updateIndex]);
+
+  return {
+    index: currentIndex,
+    incrementIndex,
+    decrementIndex,
+  };
 }
