@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import QuoteCard, { IQuote } from '../components/QuoteCard';
 import quotesData from '../data/quotes.json';
 
-const Home: React.FC = () => {
+const Home = () => {
   const quotes: IQuote[] = quotesData;
   const getRandomIndex = () => Math.floor(Math.random() * quotes.length);
   const [index, setIndex] = useState<number>(getRandomIndex());

@@ -1,12 +1,11 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
-interface HeaderProps {
+interface IHeaderProps {
   darkMode: boolean;
   setDarkMode: (value: boolean) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
+const Header = ({ darkMode, setDarkMode }: IHeaderProps) => {
   return (
     <header>
       <nav

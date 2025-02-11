@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import quotesData from '../data/quotes.json';
 import QuoteCard, { IQuote } from '../components/QuoteCard';
 
@@ -11,7 +11,7 @@ const shuffleArray = <T extends unknown>(array: T[]): T[] => {
   return arr;
 };
 
-const Test: React.FC = () => {
+const Test = () => {
   const quotes: IQuote[] = quotesData;
   const [shuffled, setShuffled] = useState<IQuote[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);

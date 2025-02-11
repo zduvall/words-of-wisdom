@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import IndexPage from './pages/Index';
@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 // @ts-expect-error - doesn't recognize env on import meta
 const basename = import.meta.env.BASE_URL;
 
-const App: React.FC = () => {
+const App = () => {
   // Dark mode state: load from localStorage if available.
   const [darkMode, setDarkMode] = useState<boolean>(
     localStorage.getItem('darkMode') === 'true'

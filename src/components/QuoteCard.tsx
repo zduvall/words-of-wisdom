@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface IQuote {
   quote: string;
   author: string;
@@ -7,17 +5,13 @@ export interface IQuote {
   hint: string;
 }
 
-interface QuoteCardProps {
+interface IQuoteCardProps {
   data: IQuote;
   reveal?: boolean;
   onToggle?: () => void;
 }
 
-const QuoteCard: React.FC<QuoteCardProps> = ({
-  data,
-  reveal = true,
-  onToggle,
-}) => {
+const QuoteCard = ({ data, reveal = true, onToggle }: IQuoteCardProps) => {
   return (
     <div
       className='box'

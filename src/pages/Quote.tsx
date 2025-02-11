@@ -1,9 +1,8 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import QuoteCard, { IQuote } from '../components/QuoteCard';
 import quotesData from '../data/quotes.json';
 
-const Quote: React.FC = () => {
+const Quote = () => {
   const { id } = useParams<{ id: string }>();
   const index = Number(id);
   const quotes: IQuote[] = quotesData;
