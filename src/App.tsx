@@ -24,7 +24,7 @@ const App = () => {
   return (
     <BrowserRouter basename={basename}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      <main className='py-8'>
+      <main className='py-8 flex-1'>
         <div className='container mx-auto'>
           <Routes>
             <Route path='/' element={<Home />} />
