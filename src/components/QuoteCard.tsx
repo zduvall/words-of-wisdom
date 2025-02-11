@@ -12,13 +12,15 @@ interface IQuoteCardProps {
 }
 
 const QuoteCard = ({ data, reveal = true, onToggle }: IQuoteCardProps) => {
+  const staticClassNames =
+    'p-6 rounded-lg shadow-md transition duration-300 secondary-background';
+  const classNames = `${staticClassNames} ${
+    onToggle
+      ? 'cursor-pointer hover-secondary-vs-tertiary-background'
+      : 'cursor-default'
+  }`;
   return (
-    <div
-      className={`p-6 rounded-lg shadow-md transition duration-300 ${
-        onToggle ? 'cursor-pointer hover:bg-gray-100' : 'cursor-default'
-      }`}
-      onClick={onToggle}
-    >
+    <div className={classNames} onClick={onToggle}>
       {reveal ? (
         <>
           <p className='text-lg mb-2'>“{data.quote}”</p>
