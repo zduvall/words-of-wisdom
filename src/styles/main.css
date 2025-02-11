@@ -31,3 +31,6 @@ body.light-mode {
 }
 
 /* Additional custom styles can go here */
+.secondary-background {
+  background-color: var(--secondary-background-color);
+}
