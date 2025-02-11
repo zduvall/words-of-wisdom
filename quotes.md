@@ -20,7 +20,7 @@ title: Quotes Index
           <p class="author">— ${quote.author}</p>
           <p class="source"><em>${quote.source}</em></p>
           ${quote.hint ? `<p class="hint"><small>Hint: ${quote.hint}</small></p>` : ''}
-          <p><a href="/quote.html?id=${index}" class="button is-small is-link">View</a></p>
+          <p><a href="{{ '/quote.html?id=' | append: index | relative_url }}" class="button is-small is-link">View</a></p>
         </div>
       `;
     });
