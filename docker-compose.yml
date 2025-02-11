@@ -1,0 +1,11 @@
+services:
+  jekyll:
+    build: .
+    ports:
+      - '4000:4000'
+    volumes:
+      # Map the current directory into /srv/jekyll inside the container.
+      # Ensures changes made on host machine are reflected inside container immediately.
+      - .:/srv/jekyll:delegated
+    environment:
+      - JEKYLL_ENV=development

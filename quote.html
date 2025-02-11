@@ -1,0 +1,44 @@
+---
+layout: default
+title: Quote
+---
+
+<div id="single-quote-container">
+  <!-- Single quote details will be rendered here -->
+</div>
+
+<script>
+  // Utility to get query parameters from the URL
+  function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+
+  function renderSingleQuote() {
+    const container = document.getElementById('single-quote-container');
+    const id = getParameterByName('id');
+    if (id === null || isNaN(id) || id < 0 || id >= window.quotes.length) {
+      container.innerHTML = '<p>Quote not found.</p>';
+      return;
+    }
+    const quote = window.quotes[id];
+    container.innerHTML = `
+      <div class="box quote-card">
+        <p class="quote">“${quote.quote}”</p>
+        <p class="author">— ${quote.author}</p>
+        <p class="source"><em>${quote.source}</em></p>
+        ${
+          quote.hint
+            ? `<p class="hint"><small>Hint: ${quote.hint}</small></p>`
+            : ''
+        }
+      </div>
+    `;
+  }
+
+  document.addEventListener('DOMContentLoaded', renderSingleQuote);
+</script>

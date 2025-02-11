@@ -1,0 +1,21 @@
+<div class="box quote-card" data-quote-id="{{ include.id }}">
+  <!-- The hint is always output; it’s visible when reveal is false -->
+  <div
+    class="quote-hint"
+    style="display: {% if include.reveal == 'true' %} none {% else %} block {% endif %};"
+  >
+    <p class="hint">{{ include.hint }}</p>
+  </div>
+  <!-- Full details: quote, author, source, and (optionally) the hint -->
+  <div
+    class="quote-details"
+    style="display: {% if include.reveal == 'true' %} block {% else %} none {% endif %};"
+  >
+    <p class="quote">“{{ include.quote }}”</p>
+    <p class="author">— {{ include.author }}</p>
+    <p class="source"><em>{{ include.source }}</em></p>
+    {% if include.hint %}
+    <p class="hint"><small>Hint: {{ include.hint }}</small></p>
+    {% endif %}
+  </div>
+</div>
