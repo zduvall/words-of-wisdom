@@ -31,8 +31,11 @@ const Header = ({ darkMode, setDarkMode }: IHeaderProps) => {
 
 export default Header;
 
+// =============================================================================
 // Helpers
+// =============================================================================
 
+// adapted from https://cruip.com/implementing-tailwind-css-dark-mode-toggle-with-no-flicker/
 const DarkModeToggle = ({ darkMode, setDarkMode }: IHeaderProps) => {
   return (
     <div
