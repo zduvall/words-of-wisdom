@@ -4,11 +4,11 @@ import QuoteCard, { IQuote } from '../components/QuoteCard';
 import { useSearchParams } from 'react-router-dom';
 
 interface ITestProps {
-  shuffle: boolean;
+  shuffle?: boolean;
   initialIndex?: number;
 }
 
-const Test = ({ shuffle, initialIndex = 0 }: ITestProps) => {
+const Test = ({ shuffle = false, initialIndex = 0 }: ITestProps) => {
   const quotes: IQuote[] = quotesData;
   const {
     index: currentIndex,
