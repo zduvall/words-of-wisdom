@@ -15,8 +15,8 @@ const App = () => {
       <main className='py-8 flex-1'>
         <div className='container mx-auto'>
           <Routes>
-            <Route path='/' element={<RandomQuote />} />
-            <Route path='/quotes' element={<Quotes />} />
+            <Route path='/' element={<Quotes />} />
+            <Route path='/random' element={<RandomQuote />} />
             <Route path='/quotes/:id' element={<Quote />} />
             <Route path='/test/:id?' element={<Quote testMode />} />
           </Routes>

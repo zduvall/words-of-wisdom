@@ -6,8 +6,8 @@ import { DesktopNavLink, MobileNavLink } from './NavLinks';
 
 const MENU_ITEMS = [
   { title: 'Home', to: '/' },
-  { title: 'Quotes', to: '/quotes' },
   { title: 'Test', to: '/test' },
+  { title: 'Random', to: '/random' },
 ];
 
 const Header = () => {
