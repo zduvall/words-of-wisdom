@@ -18,6 +18,10 @@ const Quote = ({ shuffle = false, testMode = false }: ITestProps) => {
 
   const [revealed, setRevealed] = useState<boolean>(!testMode);
 
+  useEffect(() => {
+    setRevealed(!testMode);
+  }, [testMode]);
+
   const indexMap = useMemo(
     () =>
       shuffle
