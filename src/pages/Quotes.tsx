@@ -5,10 +5,9 @@ import quotesData, { IQuote } from '../data/quotes';
 
 const Quotes = () => {
   const [query, setQuery] = useState<string>('');
-  const quotes: IQuote[] = quotesData;
 
   // Filter quotes by any field.
-  const filteredQuotes = quotes.filter((q) =>
+  const filteredQuotes = quotesData.filter((q) =>
     Object.values(q).some((val) =>
       val.toLowerCase().includes(query.toLowerCase())
     )
