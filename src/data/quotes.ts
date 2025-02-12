@@ -168,6 +168,11 @@ const quotesData: IQuote[] = [
   },
 ];
 
+export default quotesData;
+
+// =============================================================================
+// Index Helpers
+// =============================================================================
 function range(
   start: number,
   stop: number | undefined = undefined,
@@ -220,5 +225,3 @@ export const quoteIndicesAlphabetical = quoteIndicesIdentity
     if (authorCompare !== 0) return authorCompare;
     return quotesData[a].source.localeCompare(quotesData[b].source);
   });
-
-export default quotesData;
