@@ -1,11 +1,11 @@
-interface Quote {
+export interface IQuote {
   quote: string;
   author: string;
   source: string;
   hint: string;
 }
 
-const quotes: Quote[] = [
+const quotesData: IQuote[] = [
   {
     quote:
       'Wherefore, my beloved brethren, pray unto the Father with all the energy of heart, that ye may be filled with this love, which he hath bestowed upon all who are true followers of his Son, Jesus Christ; that ye may become the sons of God; that when he shall appear we shall be like him, for we shall see him as he is; that we may have this hope; that we may be purified even as he is pure. Amen.',
@@ -168,10 +168,53 @@ const quotes: Quote[] = [
   },
 ];
 
-const quotesData = quotes.sort((a, b) => {
-  const authorCompare = a.author.localeCompare(b.author);
+function range(
+  start: number,
+  stop: number | undefined = undefined,
+  step: number = 1,
+  randomize: boolean = false
+): number[] {
+  if (stop === undefined) {
+    stop = start;
+    start = 0;
+  }
+
+  const result: number[] = [];
+  if (step > 0) {
+    for (let i = start; i < stop; i += step) {
+      result.push(i);
+    }
+  } else if (step < 0) {
+    for (let i = start; i > stop; i += step) {
+      result.push(i);
+    }
+  }
+
+  if (randomize) {
+    // Fisher-Yates shuffle algorithm (more efficient than a simple sort)
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [result[i], result[j]] = [result[j], result[i]]; // Swap elements
+    }
+  }
+
+  return result;
+}
+
+/** Indices of the quotes from 0 to lenght - 1 */
+const indicesIdentity = range(quotesData.length);
+/** Indices of the quotes from length - 1 to 0 */
+const indicesReverse = range(quotesData.length - 1, -1, -1);
+/** Indices of the quotes in random order */
+const indicesRandom = range(quotesData.length, undefined, 1, true);
+/** Indices of the quotes in alphabetical order, based on author and then source */
+const indicesAlphabetical = indicesIdentity.slice().sort((a, b) => {
+  const authorCompare = quotesData[a].author.localeCompare(
+    quotesData[b].author
+  );
   if (authorCompare !== 0) return authorCompare;
-  return a.source.localeCompare(b.source);
+  return quotesData[a].source.localeCompare(quotesData[b].source);
 });
 
 export default quotesData;
+export { indicesIdentity, indicesReverse, indicesRandom, indicesAlphabetical };

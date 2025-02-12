@@ -1,9 +1,4 @@
-export interface IQuote {
-  quote: string;
-  author: string;
-  source: string;
-  hint: string;
-}
+import { IQuote } from 'data/quotes';
 
 interface IQuoteCardProps {
   data: IQuote;
