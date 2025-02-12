@@ -5,9 +5,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 interface ITestProps {
   shuffle?: boolean;
+  testMode?: boolean;
 }
 
-const Quote = ({ shuffle = false }: ITestProps) => {
+const Quote = ({ shuffle = false, testMode = false }: ITestProps) => {
   const quotes: IQuote[] = quotesData;
   const {
     index: currentIndex,
@@ -15,7 +16,8 @@ const Quote = ({ shuffle = false }: ITestProps) => {
     decrementIndex,
   } = useIndexFromPath({ initialIndex: 0, length: quotes.length });
 
-  const [revealed, setRevealed] = useState<boolean>(false);
+  const [revealed, setRevealed] = useState<boolean>(!testMode);
+  console.log({ testMode });
 
   const indexMap = useMemo(
     () =>
@@ -30,12 +32,12 @@ const Quote = ({ shuffle = false }: ITestProps) => {
   const goNext = () => {
     // setCurrentIndex((currentIndex + 1) % quotes.length);
     incrementIndex();
-    setRevealed(false);
+    setRevealed(!testMode);
   };
   const goPrev = () => {
     // setCurrentIndex((currentIndex - 1 + quotes.length) % quotes.length);
     decrementIndex();
-    setRevealed(false);
+    setRevealed(!testMode);
   };
 
   return (
@@ -47,7 +49,7 @@ const Quote = ({ shuffle = false }: ITestProps) => {
         <QuoteCard
           data={curQuote}
           reveal={revealed}
-          onToggle={() => setRevealed((prev) => !prev)}
+          onToggle={testMode ? () => setRevealed((prev) => !prev) : undefined}
         />
       )}
       <div className='flex justify-center mt-4'>
