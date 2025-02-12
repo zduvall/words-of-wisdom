@@ -1,4 +1,8 @@
-import { TSortOrder, sortQuotes as sortedQuotes } from '../data/quotes';
+import {
+  SORT_ORDER_OPTIONS,
+  TSortOrder,
+  sortQuotes as sortedQuotes,
+} from '../data/quotes';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface IAppContext {
@@ -49,7 +53,19 @@ export default function AppContextProvider({ children }: IProps) {
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Quotes
   const [query, setQuery] = useState<string>('');
-  const [sortOrder, setSortOrder] = useState<TSortOrder>('newest');
+  const [sortOrder, setSortOrder] = useState<TSortOrder>(
+    (() => {
+      // get from local storage and default to 'newest' if not found
+      const sortOrderStore = localStorage.getItem('sortOrder') as TSortOrder;
+      return SORT_ORDER_OPTIONS.includes(sortOrderStore)
+        ? sortOrderStore
+        : 'newest';
+    })()
+  );
+
+  useEffect(() => {
+    localStorage.setItem('sortOrder', sortOrder);
+  }, [sortOrder]);
 
   const sortedFilteredQuotes = sortedQuotes(sortOrder).filter((q) =>
     Object.values(q).some((val) => {

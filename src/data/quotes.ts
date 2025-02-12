@@ -226,6 +226,12 @@ const quoteIndicesAlphabetical = quoteIndicesIdentity.slice().sort((a, b) => {
 
 /** All possible values for Sort Order */
 export type TSortOrder = 'newest' | 'alphabetical' | 'oldest' | 'random';
+export const SORT_ORDER_OPTIONS: TSortOrder[] = [
+  'newest',
+  'oldest',
+  'alphabetical',
+  'random',
+];
 
 /** All values for Sort Order that don't change */
 type TSortOrderConstants = 'newest' | 'oldest' | 'alphabetical';
