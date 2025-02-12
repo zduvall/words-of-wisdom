@@ -68,6 +68,10 @@ body {
   @apply text-3xl font-bold;
 }
 
+/* 
+because I have some things mixed between css and tailwind, input-default needs
+to be used in conjunction with accent-background over 
+*/
 .input-default {
   @apply border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 h-10;
 }
