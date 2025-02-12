@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import QuoteCard from '../components/QuoteCard';
-import quotesData, { SortOrder, sortQuotes } from '../data/quotes';
 import { useQuotesContext } from 'contexts/AppContextProvider';
 
 const Quotes = () => {
