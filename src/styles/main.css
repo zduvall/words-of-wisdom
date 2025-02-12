@@ -4,8 +4,8 @@
 :root {
   /* Default dark mode */
   --background-color: #2d2d2d;
-  --secondary-background-color: #3a3a3a;
-  --tertiary-background-color: #545454;
+  --secondary-bg-color: #3a3a3a;
+  --tertiary-bg-color: #545454;
   --text-color: #d9d9d9;
   --accent-color: #02499a;
   --accent-color-hover: #005ac1;
@@ -14,8 +14,8 @@
 /* Light mode */
 body.light-mode {
   --background-color: #ffffff;
-  --secondary-background-color: #e8e8e8;
-  --tertiary-background-color: #c3c3c3;
+  --secondary-bg-color: #e8e8e8;
+  --tertiary-bg-color: #c3c3c3;
   --text-color: #363636;
   --accent-color: #3b7ce4;
   --accent-color-hover: #508def;
@@ -37,25 +37,25 @@ body {
 
 /* Background Colors */
 
-@utility secondary-background {
-  background-color: var(--secondary-background-color);
+@utility bg-secondary {
+  background-color: var(--secondary-bg-color);
 }
 
-@utility tertiary-background {
-  background-color: var(--tertiary-background-color);
+@utility bg-tertiary {
+  background-color: var(--tertiary-bg-color);
 }
 
-.hover-secondary-vs-tertiary-background {
-  background-color: var(--secondary-background-color);
+.hover-secondary-vs-bg-tertiary {
+  background-color: var(--secondary-bg-color);
 }
-.hover-secondary-vs-tertiary-background:hover {
-  background-color: var(--tertiary-background-color);
+.hover-secondary-vs-bg-tertiary:hover {
+  background-color: var(--tertiary-bg-color);
 }
 
-@utility accent-color-background {
+@utility bg-accent {
   background-color: var(--accent-color);
 }
-@utility accent-color-background-hover {
+@utility bg-accent-hover {
   background-color: var(--accent-color-hover);
 }
 
@@ -80,7 +80,7 @@ body {
   @apply py-2 px-4 rounded cursor-pointer w-fit;
 }
 .primary-button {
-  @apply button-shared text-white accent-color-background hover:accent-color-background-hover;
+  @apply button-shared text-white bg-accent hover:bg-accent-hover;
 }
 
 .secondary-button {
