@@ -111,6 +111,13 @@ const quotesData: Quote[] = [
     source: 'The Alchemist, 1988',
     hint: "The world's greatest lie",
   },
+  {
+    quote:
+      '"My heart is afraid that it will have to suffer," the boy told the alchemist one night as they looked up at the moonless sky.\n\n"Tell your heart that the fear of suffering is worse than the suffering itself. And that no heart has ever suffered when it goes in search of its dreams, because every second of the search is a second’s encounter with God and with eternity."\n\n"Every second of the search is an encounter with God," the boy told his heart. "When I have been truly searching for my treasure, every day has been luminous, because I’ve known that every hour was a part of the dream that I would find it. When I have been truly searching for my treasure, I’ve discovered things along the way that I never would have seen had I not had the courage to try things that seemed impossible for a shepherd to achieve."',
+    author: 'Paulo Coelho',
+    source: 'The Alchemist, 1988',
+    hint: 'Fear of suffering',
+  },
 ];
 
 export default quotesData;
