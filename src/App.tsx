@@ -5,15 +5,13 @@ import Quotes from './pages/Quotes';
 import Quote from './pages/Quote';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { useAppContext } from 'contexts/AppContextProvider';
 
 // @ts-expect-error - doesn't recognize env on import meta
 const basename = import.meta.env.BASE_URL;
 
 const App = () => {
-  // Dark mode state: load from localStorage if available.
-  const [darkMode, setDarkMode] = useState<boolean>(
-    localStorage.getItem('darkMode') === 'true'
-  );
+  const { darkMode, setDarkMode } = useAppContext();
 
   useEffect(() => {
     document.body.classList.toggle('light-mode', !darkMode);

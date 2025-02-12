@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import QuoteCard from '../components/QuoteCard';
-import { useQuotesContext } from 'contexts/AppContextProvider';
+import { useAppContext } from 'contexts/AppContextProvider';
 
 const Quotes = () => {
   const { query, setQuery, sort, setSort, sortedFilteredQuotes } =
-    useQuotesContext();
+    useAppContext();
 
   return (
     <div className='container mx-auto p-4'>
