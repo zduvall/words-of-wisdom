@@ -37,11 +37,11 @@ body {
 
 /* Background Colors */
 
-.secondary-background {
+@utility secondary-background {
   background-color: var(--secondary-background-color);
 }
 
-.tertiary-background {
+@utility tertiary-background {
   background-color: var(--tertiary-background-color);
 }
 
