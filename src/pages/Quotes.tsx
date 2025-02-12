@@ -11,38 +11,38 @@ const Quotes = () => {
       {/* Title */}
       <h1 className='text-3xl font-bold'>All Quotes</h1>
 
-      {/* Search Input */}
-      <input
-        type='text'
-        className='input-default w-full' // Input
-        placeholder='Search by author or keyword...'
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
+      <div className='flex flex-col md:flex-row md:justify-between gap-4'>
+        {/* Search Input */}
+        <input
+          type='text'
+          className='input-default w-full' // Input
+          placeholder='Search by author or keyword...'
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
 
-      {/* Sort Dropdown */}
-      <div className='flex flex-col md:flex-row md:items-center'>
-        <label
-          htmlFor='sort'
-          className='mb-2 md:mb-0 md:mr-2 text-sm font-medium'
-        >
-          Sort by:
-        </label>
-        <select
-          id='sort'
-          value={sort}
-          onChange={(e) =>
-            setSort(
-              e.target.value as 'newest' | 'alphabetical' | 'oldest' | 'random'
-            )
-          }
-          className='input-default'
-        >
-          <option value='newest'>Newest</option>
-          <option value='alphabetical'>Alphabetical</option>
-          <option value='oldest'>Oldest</option>
-          <option value='random'>Random</option>
-        </select>
+        {/* Sort Dropdown */}
+        <div className='flex flex-col md:flex-row md:items-center'>
+          <select
+            id='sort'
+            value={sort}
+            onChange={(e) =>
+              setSort(
+                e.target.value as
+                  | 'newest'
+                  | 'alphabetical'
+                  | 'oldest'
+                  | 'random'
+              )
+            }
+            className='input-default'
+          >
+            <option value='newest'>Added (Newest)</option>
+            <option value='oldest'>Added (Oldest)</option>
+            <option value='alphabetical'>Alphabetical</option>
+            <option value='random'>Random</option>
+          </select>
+        </div>
       </div>
 
       {/* Quote List */}
