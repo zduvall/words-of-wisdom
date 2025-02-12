@@ -139,6 +139,12 @@ const quotesData: Quote[] = [
     source: 'Harvey, 1950',
     hint: 'Smart or pleasant',
   },
+  {
+    quote: "I always have a wonderful time, wherever I am, whomever I'm with.",
+    author: 'Elwood P. Dowd',
+    source: 'Harvey, 1950',
+    hint: 'Always a wonderful time',
+  },
 ];
 
 export default quotesData;
