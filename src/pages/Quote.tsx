@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import quotesData from '../data/quotes';
 import QuoteCard from '../components/QuoteCard';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppContext } from 'contexts/AppContextProvider';
@@ -10,6 +9,8 @@ interface ITestProps {
 }
 
 const Quote = ({ testMode = false }: ITestProps) => {
+  const { sortedFilteredQuotes } = useAppContext();
+
   const {
     goNext: goNext_,
     goPrev: goPrev_,
@@ -55,7 +56,7 @@ const Quote = ({ testMode = false }: ITestProps) => {
         </button>
         <span className='bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded'>
           {/* Quote count */}
-          Quote {currSortedFilteredIndex + 1} of {quotesData.length}
+          Quote {currSortedFilteredIndex + 1} of {sortedFilteredQuotes.length}
         </span>
         <button
           className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2' // Next button
