@@ -90,5 +90,5 @@ to be used in conjunction with accent-background over
 }
 
 .secondary-button {
-  @apply button-shared bg-gray-300 hover:bg-gray-400 text-gray-800;
+  @apply button-shared text-gray-800 bg-gray-300 hover:bg-gray-400;
 }
