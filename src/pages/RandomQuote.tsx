@@ -12,10 +12,10 @@ const RandomQuote = () => {
   };
 
   return (
-    <div className='container mx-auto p-4'>
-      <h1 className='text-3xl font-bold mb-4'>Random Quote</h1>
+    <div className='container mx-auto p-4 flex flex-col gap-4'>
+      <h1 className='text-3xl font-bold'>Random Quote</h1>
       <button
-        className='accent-background-hover text-white font-bold py-2 px-4 rounded mb-4 cursor-pointer' // Button styling
+        className='accent-background-hover text-white font-bold py-2 px-4 rounded cursor-pointer w-fit' // Button styling
         onClick={newRandomQuote}
       >
         New Random Quote
