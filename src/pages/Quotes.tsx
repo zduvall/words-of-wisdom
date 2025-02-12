@@ -7,21 +7,21 @@ const Quotes = () => {
     useAppContext();
 
   return (
-    <div className='container mx-auto p-4'>
+    <div className='container mx-auto p-4 flex flex-col gap-4'>
       {/* Title */}
       <h1 className='text-3xl font-bold mb-4'>All Quotes</h1>
 
       {/* Search Input */}
       <input
         type='text'
-        className='input-default mb-4 w-full' // Input
+        className='input-default w-full' // Input
         placeholder='Search by author or keyword...'
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
 
       {/* Sort Dropdown */}
-      <div className='flex flex-col md:flex-row md:items-center mb-4'>
+      <div className='flex flex-col md:flex-row md:items-center'>
         <label
           htmlFor='sort'
           className='mb-2 md:mb-0 md:mr-2 text-sm font-medium'
@@ -47,7 +47,7 @@ const Quotes = () => {
 
       {/* Quote List */}
       {sortedFilteredQuotes.map((q) => (
-        <div key={q.originalIndex} className='mb-4'>
+        <div key={q.originalIndex}>
           <QuoteCard data={q} reveal={true} />
           <Link
             to={`/quotes/${q.originalIndex}`}
