@@ -46,9 +46,11 @@ export default function AppContextProvider({ children }: IProps) {
   const [sort, setSort] = useState<SortOrder>('newest');
 
   const sortedFilteredQuotes = sortedQuotes(sort).filter((q) =>
-    Object.values(q).some((val) =>
-      val.toLowerCase().includes(query.toLowerCase())
-    )
+    Object.values(q).some((val) => {
+      // skip checking values in Quotes that are not strings, such as originalIndex.
+      if (typeof val !== 'string') return false;
+      return val.toLowerCase().includes(query.toLowerCase());
+    })
   );
 
   return (
