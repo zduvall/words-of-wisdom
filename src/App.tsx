@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
+import RandomQuote from './pages/RandomQuote';
 import Quotes from './pages/Quotes';
 import Quote from './pages/Quote';
 import Header from './components/Header';
@@ -15,7 +15,7 @@ const App = () => {
       <main className='py-8 flex-1'>
         <div className='container mx-auto'>
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<RandomQuote />} />
             <Route path='/quotes' element={<Quotes />} />
             <Route path='/quotes/:id' element={<Quote />} />
             <Route path='/test/:id?' element={<Quote testMode />} />

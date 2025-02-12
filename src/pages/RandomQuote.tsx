@@ -2,7 +2,7 @@ import { useState } from 'react';
 import QuoteCard from '../components/QuoteCard';
 import quotesData, { IQuote } from '../data/quotes';
 
-const Home = () => {
+const RandomQuote = () => {
   const quotes: IQuote[] = quotesData;
   const getRandomIndex = () => Math.floor(Math.random() * quotes.length);
   const [index, setIndex] = useState<number>(getRandomIndex());
@@ -25,4 +25,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default RandomQuote;
