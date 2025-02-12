@@ -31,10 +31,13 @@ export default function AppContextProvider({ children }: IProps) {
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Dark Mode
   const [darkMode, setDarkMode] = useState<boolean>(
-    // get from local storage and default to true if not found
-    localStorage.getItem('darkMode')
-      ? localStorage.getItem('darkMode') === 'true'
-      : true
+    (() => {
+      // get from local storage and default to true if not found
+      const darkModeStore = localStorage.getItem('darkMode');
+      return ['true', 'false'].includes(darkModeStore ?? '')
+        ? darkModeStore === 'true'
+        : true;
+    })()
   );
 
   useEffect(() => {
