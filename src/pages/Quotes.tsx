@@ -19,6 +19,33 @@ const Quotes = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
+
+      {/* Sort Dropdown */}
+      <div className='flex flex-col md:flex-row md:items-center mb-4'>
+        <label
+          htmlFor='sort'
+          className='mb-2 md:mb-0 md:mr-2 text-sm font-medium text-gray-700'
+        >
+          Sort by:
+        </label>
+        <select
+          id='sort'
+          value={sort}
+          onChange={(e) =>
+            setSort(
+              e.target.value as 'newest' | 'alphabetical' | 'oldest' | 'random'
+            )
+          }
+          className='border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+        >
+          <option value='newest'>Newest</option>
+          <option value='alphabetical'>Alphabetical</option>
+          <option value='oldest'>Oldest</option>
+          <option value='random'>Random</option>
+        </select>
+      </div>
+
+      {/* Quote List */}
       {sortedFilteredQuotes.map((q) => (
         <div key={q.originalIndex} className='mb-4'>
           <QuoteCard data={q} reveal={true} />
