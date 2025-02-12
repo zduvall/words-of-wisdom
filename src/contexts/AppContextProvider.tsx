@@ -59,7 +59,7 @@ export default function AppContextProvider({ children }: IProps) {
       const sortOrderStore = localStorage.getItem('sortOrder') as TSortOrder;
       return SORT_ORDER_OPTIONS.includes(sortOrderStore)
         ? sortOrderStore
-        : 'newest';
+        : 'alphabetical';
     })()
   );
 
