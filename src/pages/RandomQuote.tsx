@@ -14,10 +14,7 @@ const RandomQuote = () => {
   return (
     <div className='page-container'>
       <h1 className='page-title'>Random Quote</h1>
-      <button
-        className='accent-background-hover primary-button'
-        onClick={newRandomQuote}
-      >
+      <button className='primary-button' onClick={newRandomQuote}>
         New Random Quote
       </button>
       <QuoteCard data={quotes[index]} reveal={true} />

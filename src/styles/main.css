@@ -52,15 +52,10 @@ body {
   background-color: var(--tertiary-background-color);
 }
 
-.accent-background {
+@utility accent-background {
   background-color: var(--accent-color);
 }
-
-.accent-background-hover {
-  background-color: var(--accent-color);
-}
-
-.accent-background-hover:hover {
+@utility accent-background-hover {
   background-color: var(--accent-color-hover);
 }
 
@@ -86,7 +81,7 @@ because I have some things mixed between css and tailwind, input-default needs
 to be used in conjunction with accent-background over 
 */
 .primary-button {
-  @apply button-shared text-white;
+  @apply button-shared text-white accent-background hover:accent-background-hover;
 }
 
 .secondary-button {

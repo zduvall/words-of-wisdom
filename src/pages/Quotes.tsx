@@ -43,7 +43,7 @@ const Quotes = () => {
           <QuoteCard data={q} reveal={true} />
           <Link
             to={`/quotes/${q.originalIndex}`}
-            className='accent-background-hover primary-button' // Link button
+            className='primary-button' // Link button
           >
             View
           </Link>
