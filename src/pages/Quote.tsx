@@ -1,53 +1,46 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import quotesData from '../data/quotes';
 import QuoteCard from '../components/QuoteCard';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppContext } from 'contexts/AppContextProvider';
 
 interface ITestProps {
   shuffle?: boolean;
   testMode?: boolean;
 }
 
-const Quote = ({ shuffle = false, testMode = false }: ITestProps) => {
+const Quote = ({ testMode = false }: ITestProps) => {
   const {
-    index: currentIndex,
-    incrementIndex,
-    decrementIndex,
-  } = useIndexFromPath({ initialIndex: 0, length: quotesData.length });
+    goNext: goNext_,
+    goPrev: goPrev_,
+    quoteToShow,
+    currSortedFilteredIndex,
+  } = useIndexFromPath();
 
   const [revealed, setRevealed] = useState<boolean>(!testMode);
 
   useEffect(() => {
+    // needed for when switching directly from a single quote view to test mode
     setRevealed(!testMode);
   }, [testMode]);
 
-  const indexMap = useMemo(
-    () =>
-      shuffle
-        ? createShuffledNumberToOriginalMap(quotesData.length - 1)
-        : createIdentityMap(quotesData.length - 1),
-    [quotesData.length, shuffle]
-  );
-
-  const curQuote = quotesData[indexMap.get(currentIndex) || 0];
-
   const goNext = () => {
-    incrementIndex();
+    goNext_();
     setRevealed(!testMode);
   };
   const goPrev = () => {
-    decrementIndex();
+    goPrev_();
     setRevealed(!testMode);
   };
 
-  const title = shuffle ? 'Test Your Memory' : 'Quote';
+  const title = testMode ? 'Test Your Memory' : 'Quote';
 
   return (
     <div className='container mx-auto p-4'>
       <h1 className='text-3xl font-bold mb-4'>{title}</h1>
-      {curQuote && (
+      {quoteToShow && (
         <QuoteCard
-          data={curQuote}
+          data={quoteToShow}
           reveal={revealed}
           onToggle={testMode ? () => setRevealed((prev) => !prev) : undefined}
         />
@@ -62,7 +55,7 @@ const Quote = ({ shuffle = false, testMode = false }: ITestProps) => {
         </button>
         <span className='bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded'>
           {/* Quote count */}
-          Quote {currentIndex + 1} of {quotesData.length}
+          Quote {currSortedFilteredIndex + 1} of {quotesData.length}
         </span>
         <button
           className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2' // Next button
@@ -80,79 +73,27 @@ export default Quote;
 // =============================================================================
 // Helpers
 // =============================================================================
-function createShuffledUniqueNumbers(max: number): number[] {
-  if (max < 0) {
-    return [];
-  }
 
-  const allNumbers: number[] = Array.from({ length: max + 1 }, (_, i) => i);
+function useIndexFromPath() {
+  const { sortedFilteredQuotes } = useAppContext();
 
-  for (let i = allNumbers.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [allNumbers[i], allNumbers[j]] = [allNumbers[j], allNumbers[i]];
-  }
-
-  return allNumbers;
-}
-
-function createShuffledNumberToOriginalMap(max: number): Map<number, number> {
-  if (max < 0) {
-    return new Map();
-  }
-
-  const originalIndices: number[] = Array.from(
-    { length: max + 1 },
-    (_, i) => i
-  ); // Renamed to indices as they are used as indices
-  const shuffledIndices: number[] = createShuffledUniqueNumbers(max); // Renamed to indices as they are used as indices
-
-  const shuffledIndexToOriginalIndexMap: Map<number, number> = new Map(); // More descriptive map name
-
-  // Reversed mapping: shuffled index (key) -> original index (value)
-  for (let i = 0; i <= max; i++) {
-    shuffledIndexToOriginalIndexMap.set(shuffledIndices[i], originalIndices[i]);
-  }
-
-  return shuffledIndexToOriginalIndexMap;
-}
-
-function createIdentityMap(n: number): Map<number, number> {
-  if (n < 0) {
-    return new Map(); // Or handle negative n as needed, e.g., throw error.
-  }
-
-  const identityMap: Map<number, number> = new Map();
-
-  for (let i = 0; i <= n; i++) {
-    identityMap.set(i, i);
-  }
-
-  return identityMap;
-}
-
-// =============================================================================
-// hook
-// =============================================================================
-
-interface UseIndexFromPathProps {
-  initialIndex?: number;
-  length?: number; // Add length prop
-}
-
-interface UseIndexFromPathResult {
-  index: number;
-  incrementIndex: () => void;
-  decrementIndex: () => void;
-}
-
-function useIndexFromPath({
-  initialIndex = 0,
-  length,
-}: UseIndexFromPathProps = {}): UseIndexFromPathResult {
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const currentIndex = getIndexFromPath(initialIndex);
+  const defaultIndex = sortedFilteredQuotes[0].originalIndex;
+
+  const getIndexFromPath = (): number => {
+    const pathSegments = location.pathname.split('/');
+    const lastSegment = pathSegments[pathSegments.length - 1];
+    const parsedIndex = parseInt(lastSegment, 10);
+    return isNaN(parsedIndex) ? defaultIndex : parsedIndex;
+  };
+
+  const currOriginalIndex = getIndexFromPath();
+
+  const currSortedFilteredIndex = sortedFilteredQuotes.findIndex(
+    (q) => q.originalIndex === currOriginalIndex
+  );
 
   const updateIndex = useCallback(
     (newIndex: number) => {
@@ -174,32 +115,29 @@ function useIndexFromPath({
     const lastSegment = pathSegments[pathSegments.length - 1];
 
     if (isNaN(parseInt(lastSegment, 10))) {
-      updateIndex(initialIndex);
+      updateIndex(defaultIndex);
     }
-  }, [initialIndex, location.pathname, updateIndex]);
+  }, [defaultIndex, location.pathname, updateIndex]);
 
-  const incrementIndex = useCallback(() => {
-    let nextIndex = currentIndex + 1;
-    if (length !== undefined && nextIndex >= length) {
-      nextIndex = 0; // Loop back to 0 if length is provided and index exceeds length
-    }
-    updateIndex(nextIndex);
-  }, [currentIndex, length, updateIndex]); // Add length as dependency
-
-  const decrementIndex = useCallback(() => {
-    updateIndex(Math.max(0, currentIndex - 1));
-  }, [currentIndex, updateIndex]);
+  const goNext = () => {
+    const nextIndex =
+      currSortedFilteredIndex === sortedFilteredQuotes.length - 1
+        ? 0
+        : currSortedFilteredIndex + 1;
+    updateIndex(sortedFilteredQuotes[nextIndex].originalIndex);
+  };
+  const goPrev = () => {
+    const prevIndex =
+      currSortedFilteredIndex === 0
+        ? sortedFilteredQuotes.length - 1
+        : currSortedFilteredIndex - 1;
+    updateIndex(sortedFilteredQuotes[prevIndex].originalIndex);
+  };
 
   return {
-    index: currentIndex,
-    incrementIndex,
-    decrementIndex,
+    goNext,
+    goPrev,
+    quoteToShow: sortedFilteredQuotes[currSortedFilteredIndex],
+    currSortedFilteredIndex,
   };
 }
-
-const getIndexFromPath = (defaultIndex: number): number => {
-  const pathSegments = location.pathname.split('/');
-  const lastSegment = pathSegments[pathSegments.length - 1];
-  const parsedIndex = parseInt(lastSegment, 10);
-  return isNaN(parsedIndex) ? defaultIndex : parsedIndex;
-};

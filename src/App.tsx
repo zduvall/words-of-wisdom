@@ -18,7 +18,7 @@ const App = () => {
             <Route path='/' element={<Home />} />
             <Route path='/quotes' element={<Quotes />} />
             <Route path='/quotes/:id' element={<Quote />} />
-            <Route path='/test/:id?' element={<Quote shuffle testMode />} />
+            <Route path='/test/:id?' element={<Quote testMode />} />
           </Routes>
         </div>
       </main>
