@@ -9,12 +9,11 @@ interface ITestProps {
 }
 
 const Quote = ({ shuffle = false, testMode = false }: ITestProps) => {
-  const quotes: IQuote[] = quotesData;
   const {
     index: currentIndex,
     incrementIndex,
     decrementIndex,
-  } = useIndexFromPath({ initialIndex: 0, length: quotes.length });
+  } = useIndexFromPath({ initialIndex: 0, length: quotesData.length });
 
   const [revealed, setRevealed] = useState<boolean>(!testMode);
 
@@ -25,12 +24,12 @@ const Quote = ({ shuffle = false, testMode = false }: ITestProps) => {
   const indexMap = useMemo(
     () =>
       shuffle
-        ? createShuffledNumberToOriginalMap(quotes.length - 1)
-        : createIdentityMap(quotes.length - 1),
-    [quotes.length, shuffle]
+        ? createShuffledNumberToOriginalMap(quotesData.length - 1)
+        : createIdentityMap(quotesData.length - 1),
+    [quotesData.length, shuffle]
   );
 
-  const curQuote = quotes[indexMap.get(currentIndex) || 0];
+  const curQuote = quotesData[indexMap.get(currentIndex) || 0];
 
   const goNext = () => {
     incrementIndex();
@@ -63,7 +62,7 @@ const Quote = ({ shuffle = false, testMode = false }: ITestProps) => {
         </button>
         <span className='bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded'>
           {/* Quote count */}
-          Quote {currentIndex + 1} of {quotes.length}
+          Quote {currentIndex + 1} of {quotesData.length}
         </span>
         <button
           className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2' // Next button

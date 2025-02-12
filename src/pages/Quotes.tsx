@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import QuoteCard from '../components/QuoteCard';
-import quotesData, { SortOrder } from '../data/quotes';
+import quotesData, { SortOrder, sortQuotes } from '../data/quotes';
 
 const Quotes = () => {
   const [query, setQuery] = useState<string>('');
