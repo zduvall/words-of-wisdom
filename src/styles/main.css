@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@tailwind utilities;
 
 :root {
   /* Default dark mode */
@@ -73,18 +74,21 @@ body {
   @apply text-3xl font-bold;
 }
 
+.input-default {
+  @apply border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 h-10;
+}
+@utility button-shared {
+  @apply py-2 px-4 rounded cursor-pointer w-fit;
+}
+
 /* 
 because I have some things mixed between css and tailwind, input-default needs
 to be used in conjunction with accent-background over 
 */
-.input-default {
-  @apply border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 h-10;
-}
-
 .primary-button {
-  @apply text-white font-bold py-2 px-4 rounded text-sm inline-block w-fit cursor-pointer;
+  @apply button-shared text-white inline-block;
 }
 
 .secondary-button {
-  @apply bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded cursor-pointer;
+  @apply button-shared bg-gray-300 hover:bg-gray-400 text-gray-800;
 }
