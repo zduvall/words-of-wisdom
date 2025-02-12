@@ -14,13 +14,6 @@ const Quotes = () => {
     )
   );
 
-  // Sort quotes by author then source.
-  const sortedQuotes = filteredQuotes.sort((a, b) => {
-    const authorCompare = a.author.localeCompare(b.author);
-    if (authorCompare !== 0) return authorCompare;
-    return a.source.localeCompare(b.source);
-  });
-
   return (
     <div className='container mx-auto p-4'>
       <h1 className='text-3xl font-bold mb-4'>All Quotes</h1> {/* Title */}
@@ -31,7 +24,7 @@ const Quotes = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      {sortedQuotes.map((q, idx) => (
+      {quotesData.map((q, idx) => (
         <div key={idx} className='mb-4'>
           {/* Margin between quote cards */}
           <QuoteCard data={q} reveal={true} />

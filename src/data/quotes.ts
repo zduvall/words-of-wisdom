@@ -5,7 +5,7 @@ interface Quote {
   hint: string;
 }
 
-const quotesData: Quote[] = [
+const quotes: Quote[] = [
   {
     quote:
       'Wherefore, my beloved brethren, pray unto the Father with all the energy of heart, that ye may be filled with this love, which he hath bestowed upon all who are true followers of his Son, Jesus Christ; that ye may become the sons of God; that when he shall appear we shall be like him, for we shall see him as he is; that we may have this hope; that we may be purified even as he is pure. Amen.',
@@ -167,5 +167,11 @@ const quotesData: Quote[] = [
     hint: 'Eternity is retrospective',
   },
 ];
+
+const quotesData = quotes.sort((a, b) => {
+  const authorCompare = a.author.localeCompare(b.author);
+  if (authorCompare !== 0) return authorCompare;
+  return a.source.localeCompare(b.source);
+});
 
 export default quotesData;
