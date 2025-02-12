@@ -17,7 +17,6 @@ const Quote = ({ shuffle = false, testMode = false }: ITestProps) => {
   } = useIndexFromPath({ initialIndex: 0, length: quotes.length });
 
   const [revealed, setRevealed] = useState<boolean>(!testMode);
-  console.log({ testMode });
 
   const indexMap = useMemo(
     () =>

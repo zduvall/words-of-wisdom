@@ -12,7 +12,6 @@ interface IQuoteCardProps {
 }
 
 const QuoteCard = ({ data, reveal = true, onToggle }: IQuoteCardProps) => {
-  console.log({ onToggle });
   const staticClassNames =
     'p-6 rounded-lg shadow-md transition duration-300 secondary-background';
   const classNames = `${staticClassNames} ${
