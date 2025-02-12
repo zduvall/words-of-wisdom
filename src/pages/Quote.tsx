@@ -5,16 +5,15 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 interface ITestProps {
   shuffle?: boolean;
-  initialIndex?: number;
 }
 
-const Quote = ({ shuffle = false, initialIndex = 0 }: ITestProps) => {
+const Quote = ({ shuffle = false }: ITestProps) => {
   const quotes: IQuote[] = quotesData;
   const {
     index: currentIndex,
     incrementIndex,
     decrementIndex,
-  } = useIndexFromPath({ initialIndex, length: quotes.length });
+  } = useIndexFromPath({ initialIndex: 0, length: quotes.length });
 
   const [revealed, setRevealed] = useState<boolean>(false);
 
