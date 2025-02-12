@@ -90,6 +90,20 @@ const quotesData: Quote[] = [
     source: 'The Conquest of Happiness, 1930',
     hint: 'Greatest source of personal happiness',
   },
+  {
+    quote:
+      'We are not living in a world where all roads are radii of a circle and where all, if followed long enough, will therefore draw gradually nearer and finally meet at the centre; rather in a world where every road, after a few miles, forks into two, and each of those into two again, and at each fork you must make a decision. Even on the biological level life is not like a river but like a tree. It does not move towards unity but away from it and the creatures grow further apart as they increase in perfection. Good, as it ripens, becomes continually more different not only from evil but from other good.',
+    author: 'C.S. Lewis',
+    source: 'The Great Divorce, 1945',
+    hint: 'Good becomes more different from other good',
+  },
+  {
+    quote:
+      'There are only two kinds of people in the end: those who say to God, "Thy will be done," and those to whom God says, in the end, "Thy will be done."',
+    author: 'C.S. Lewis',
+    source: 'The Great Divorce, 1945',
+    hint: 'Two kinds of people in the end',
+  },
 ];
 
 export default quotesData;
