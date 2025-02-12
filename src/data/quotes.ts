@@ -104,6 +104,13 @@ const quotesData: Quote[] = [
     source: 'The Great Divorce, 1945',
     hint: 'Two kinds of people in the end',
   },
+  {
+    quote:
+      "\"What's the world's greatest lie?\" the boy asked, completely surprised.\n\n\"It's this: that at a certain point in our lives, we lose control of what's happening to us, and our lives become controlled by fate. That's the world's greatest lie.\"",
+    author: 'Paulo Coelho',
+    source: 'The Alchemist, 1988',
+    hint: "The world's greatest lie",
+  },
 ];
 
 export default quotesData;
