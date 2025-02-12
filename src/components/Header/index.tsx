@@ -60,9 +60,7 @@ const Header: React.FC<IHeaderProps> = ({ darkMode, setDarkMode }) => {
                 onClick={() => setIsMobileMenuOpen(false)}
               />
             ))}
-            <div className='px-4 py-2'>
-              <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
-            </div>
+            <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
           </nav>
         </div>
       )}
