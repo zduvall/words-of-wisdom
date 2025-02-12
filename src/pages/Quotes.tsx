@@ -10,7 +10,7 @@ const Quotes = () => {
   return (
     <div className='container mx-auto p-4 flex flex-col gap-4'>
       {/* Title */}
-      <h1 className='text-3xl font-bold'>All Quotes</h1>
+      <h1 className='page-title'>All Quotes</h1>
 
       <div className='flex flex-col md:flex-row md:justify-between gap-4'>
         {/* Search Input */}

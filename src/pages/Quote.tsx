@@ -38,7 +38,7 @@ const Quote = ({ testMode = false }: ITestProps) => {
 
   return (
     <div className='container mx-auto p-4 flex flex-col gap-4'>
-      <h1 className='text-3xl font-bold'>{title}</h1>
+      <h1 className='page-title'>{title}</h1>
       {quoteToShow && (
         <QuoteCard
           data={quoteToShow}
