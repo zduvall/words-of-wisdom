@@ -8,7 +8,7 @@
   --tertiary-bg-color: #545454;
   --text-color: #d9d9d9;
   --accent-color: #02499a;
-  --accent-color-hover: #005ac1;
+  --accent-color-light: #005ac1;
 }
 
 /* Light mode */
@@ -18,7 +18,7 @@ body.light-mode {
   --tertiary-bg-color: #c3c3c3;
   --text-color: #363636;
   --accent-color: #3b7ce4;
-  --accent-color-hover: #508def;
+  --accent-color-light: #508def;
 }
 
 body {
@@ -55,8 +55,8 @@ body {
 @utility bg-accent {
   background-color: var(--accent-color);
 }
-@utility bg-accent-hover {
-  background-color: var(--accent-color-hover);
+@utility bg-accent-light {
+  background-color: var(--accent-color-light);
 }
 
 /* Pages */
@@ -80,7 +80,7 @@ body {
   @apply py-2 px-4 rounded cursor-pointer w-fit;
 }
 .primary-button {
-  @apply button-shared text-white bg-accent hover:bg-accent-hover;
+  @apply button-shared text-white bg-accent hover:bg-accent-light;
 }
 
 .secondary-button {
