@@ -29,9 +29,9 @@ const Quotes = () => {
             onChange={(e) => setSortOrder(e.target.value as TSortOrder)}
             className='input-default'
           >
+            <option value='alphabetical'>Alphabetical (author)</option>
             <option value='newest'>Added (Newest)</option>
             <option value='oldest'>Added (Oldest)</option>
-            <option value='alphabetical'>Alphabetical (author)</option>
             <option value='random'>Random</option>
           </select>
         </div>
