@@ -1,7 +1,21 @@
 import { SortOrder, sortQuotes as sortedQuotes } from '../data/quotes';
-import { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-const QuotesContext = createContext({});
+interface IAppContext {
+  query: string;
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
+  sort: SortOrder;
+  setSort: React.Dispatch<React.SetStateAction<SortOrder>>;
+  sortedFilteredQuotes: ReturnType<typeof sortedQuotes>;
+}
+
+const QuotesContext = createContext<IAppContext>({
+  query: '',
+  setQuery: () => {},
+  sort: 'newest',
+  setSort: () => {},
+  sortedFilteredQuotes: [],
+});
 
 export const useQuotesContext = () => useContext(QuotesContext);
 

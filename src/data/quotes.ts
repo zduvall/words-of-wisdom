@@ -227,9 +227,9 @@ const quoteIndicesAlphabetical = quoteIndicesIdentity.slice().sort((a, b) => {
 export type SortOrder = 'newest' | 'alphabetical' | 'oldest' | 'random';
 
 const quoteIndices: { [key in SortOrder]: number[] } = {
-  newest: quoteIndicesIdentity,
+  newest: quoteIndicesReverse,
+  oldest: quoteIndicesIdentity,
   alphabetical: quoteIndicesAlphabetical,
-  oldest: quoteIndicesReverse,
   random: quoteIndicesRandom,
 };
 

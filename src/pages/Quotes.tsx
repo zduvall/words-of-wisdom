@@ -2,17 +2,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import QuoteCard from '../components/QuoteCard';
 import quotesData, { SortOrder, sortQuotes } from '../data/quotes';
+import { useQuotesContext } from 'contexts/AppContextProvider';
 
 const Quotes = () => {
-  const [query, setQuery] = useState<string>('');
-  const [sort, setSort] = useState<SortOrder>('newest');
-
-  // Filter quotes by any field.
-  const filteredQuotes = quotesData.filter((q) =>
-    Object.values(q).some((val) =>
-      val.toLowerCase().includes(query.toLowerCase())
-    )
-  );
+  const { query, setQuery, sort, setSort, sortedFilteredQuotes } =
+    useQuotesContext();
 
   return (
     <div className='container mx-auto p-4'>
@@ -24,7 +18,7 @@ const Quotes = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      {filteredQuotes.map((q, idx) => (
+      {sortedFilteredQuotes.map((q, idx) => (
         <div key={idx} className='mb-4'>
           {/* Margin between quote cards */}
           <QuoteCard data={q} reveal={true} />
