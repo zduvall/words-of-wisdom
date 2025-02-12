@@ -21,7 +21,7 @@
    npm run dev
    ```
 
-   Open your browser to [http://localhost:5173](http://localhost:5173) (or the port indicated in your terminal). Changes will update live.
+   Open your browser to [http://localhost:3000](http://localhost:3000) (or the port indicated in your terminal). Changes will update live.
 
 ## Deploying to GitHub Pages
 
