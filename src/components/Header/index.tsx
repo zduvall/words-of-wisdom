@@ -21,11 +21,6 @@ const Header: React.FC<IHeaderProps> = ({ darkMode, setDarkMode }) => {
     setIsMobileMenuOpen((prev) => !prev);
   };
 
-  // Close the mobile menu when a link is clicked.
-  const handleLinkClick = () => {
-    setIsMobileMenuOpen(false);
-  };
-
   return (
     <header className='bg-blue-600 p-4 flex justify-between items-center relative'>
       {/* Logo / Site Title */}
@@ -38,7 +33,7 @@ const Header: React.FC<IHeaderProps> = ({ darkMode, setDarkMode }) => {
       {/* Desktop Navigation */}
       <nav className='hidden md:flex space-x-4 items-center'>
         {MENU_ITEMS.map((item) => (
-          <DesktopNavLink key={item.to} to={item.to} title={item.title} />
+          <DesktopNavLink key={item.to} item={item} />
         ))}
         <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
       </nav>
@@ -59,14 +54,10 @@ const Header: React.FC<IHeaderProps> = ({ darkMode, setDarkMode }) => {
         <div className='absolute top-full right-4 bg-blue-600 rounded-md shadow-lg w-48 mt-2 z-50'>
           <nav className='flex flex-col py-2'>
             {MENU_ITEMS.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className='text-white px-4 py-2 hover:bg-blue-500'
-                onClick={handleLinkClick}
-              >
-                {item.title}
-              </Link>
+              <MobileNavLink
+                item={item}
+                onClick={() => setIsMobileMenuOpen(false)}
+              />
             ))}
             <div className='px-4 py-2'>
               <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
@@ -84,8 +75,29 @@ export default Header;
 // helpers
 // ==============================
 
-const DesktopNavLink = ({ to, title }: { to: string; title: string }) => (
-  <Link to={to} className='text-white hover:underline'>
-    {title}
+interface INavLinkProps {
+  item: {
+    title: string;
+    to: string;
+  };
+}
+
+const DesktopNavLink = ({ item }: INavLinkProps) => (
+  <Link to={item.to} className='text-white hover:underline'>
+    {item.title}
+  </Link>
+);
+
+interface IMobileNavLinkProps extends INavLinkProps {
+  onClick: () => void;
+}
+
+const MobileNavLink = ({ item, onClick }: IMobileNavLinkProps) => (
+  <Link
+    to={item.to}
+    className='text-white px-4 py-2 hover:bg-blue-500'
+    onClick={onClick}
+  >
+    {item.title}
   </Link>
 );
