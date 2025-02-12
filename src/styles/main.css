@@ -76,10 +76,6 @@ body {
   @apply py-2 px-4 rounded cursor-pointer w-fit;
 }
 
-/* 
-because I have some things mixed between css and tailwind, input-default needs
-to be used in conjunction with accent-background over 
-*/
 .primary-button {
   @apply button-shared text-white accent-background hover:accent-background-hover;
 }
