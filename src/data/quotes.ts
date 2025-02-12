@@ -125,6 +125,20 @@ const quotesData: Quote[] = [
     source: 'The Alchemist, 1988',
     hint: 'Makes life interesting',
   },
+  {
+    quote:
+      "It's the possibility of having a dream come true that makes life interesting",
+    author: 'Paulo Coelho',
+    source: 'The Alchemist, 1988',
+    hint: 'Makes life interesting',
+  },
+  {
+    quote:
+      "Years ago my mother used to say to me, she'd say, 'In this world, Elwood, you must be' - she always called me Elwood - 'In this world, Elwood, you must be oh so smart or oh so pleasant.' Well, for years I was smart. I recommend pleasant. You may quote me.",
+    author: 'Elwood P. Dowd',
+    source: 'Harvey, 1950',
+    hint: 'Smart or pleasant',
+  },
 ];
 
 export default quotesData;
