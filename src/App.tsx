@@ -13,11 +13,6 @@ const basename = import.meta.env.BASE_URL;
 const App = () => {
   const { darkMode, setDarkMode } = useAppContext();
 
-  useEffect(() => {
-    document.body.classList.toggle('light-mode', !darkMode);
-    localStorage.setItem('darkMode', darkMode.toString());
-  }, [darkMode]);
-
   return (
     <BrowserRouter basename={basename}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />

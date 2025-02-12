@@ -1,5 +1,5 @@
 import { SortOrder, sortQuotes as sortedQuotes } from '../data/quotes';
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface IAppContext {
   darkMode: boolean;
@@ -28,11 +28,19 @@ interface IProps {
 }
 
 export default function AppContextProvider({ children }: IProps) {
-  // Dark mode state: load from localStorage if available.
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  // Dark Mode
   const [darkMode, setDarkMode] = useState<boolean>(
-    localStorage.getItem('darkMode') === 'true'
+    localStorage.getItem('darkMode') === 'true' // load from localStorage if available.
   );
 
+  useEffect(() => {
+    document.body.classList.toggle('light-mode', !darkMode);
+    localStorage.setItem('darkMode', darkMode.toString());
+  }, [darkMode]);
+
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  // Quotes
   const [query, setQuery] = useState<string>('');
   const [sort, setSort] = useState<SortOrder>('newest');
 
