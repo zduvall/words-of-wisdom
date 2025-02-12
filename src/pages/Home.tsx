@@ -13,11 +13,8 @@ const Home = () => {
 
   return (
     <div className='container mx-auto p-4'>
-      {' '}
       {/* Container and padding */}
-      <h1 className='text-3xl font-bold mb-4'>
-        Welcome to Words of Wisdom
-      </h1>{' '}
+      <h1 className='text-3xl font-bold mb-4'>Welcome to Words of Wisdom</h1>
       {/* Title styling */}
       <QuoteCard data={quotes[index]} reveal={true} />
       <button

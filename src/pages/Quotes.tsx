@@ -23,8 +23,6 @@ const Quotes = () => {
 
   return (
     <div className='container mx-auto p-4'>
-      {' '}
-      {/* Container and padding */}
       <h1 className='text-3xl font-bold mb-4'>All Quotes</h1> {/* Title */}
       <input
         type='text'
