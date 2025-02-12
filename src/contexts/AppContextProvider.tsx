@@ -1,4 +1,4 @@
-import { SortOrder, sortQuotes as sortedQuotes } from '../data/quotes';
+import { TSortOrder, sortQuotes as sortedQuotes } from '../data/quotes';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface IAppContext {
@@ -6,8 +6,8 @@ interface IAppContext {
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
   query: string;
   setQuery: React.Dispatch<React.SetStateAction<string>>;
-  sort: SortOrder;
-  setSort: React.Dispatch<React.SetStateAction<SortOrder>>;
+  sort: TSortOrder;
+  setSort: React.Dispatch<React.SetStateAction<TSortOrder>>;
   sortedFilteredQuotes: ReturnType<typeof sortedQuotes>;
 }
 
@@ -43,7 +43,7 @@ export default function AppContextProvider({ children }: IProps) {
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Quotes
   const [query, setQuery] = useState<string>('');
-  const [sort, setSort] = useState<SortOrder>('newest');
+  const [sort, setSort] = useState<TSortOrder>('newest');
 
   const sortedFilteredQuotes = sortedQuotes(sort).filter((q) =>
     Object.values(q).some((val) => {
