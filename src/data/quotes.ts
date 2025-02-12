@@ -226,9 +226,12 @@ const quoteIndicesAlphabetical = quoteIndicesIdentity.slice().sort((a, b) => {
 
 export type SortOrder = 'newest' | 'alphabetical' | 'oldest' | 'random';
 
-export const quoteIndices: { [key in SortOrder]: number[] } = {
+const quoteIndices: { [key in SortOrder]: number[] } = {
   newest: quoteIndicesIdentity,
   alphabetical: quoteIndicesAlphabetical,
   oldest: quoteIndicesReverse,
   random: quoteIndicesRandom,
 };
+
+const sortQuotes = (order: SortOrder): IQuote[] =>
+  quoteIndices[order].map((idx) => quotesData[idx]);
