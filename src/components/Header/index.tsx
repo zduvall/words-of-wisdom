@@ -34,6 +34,7 @@ const Header: React.FC<IHeaderProps> = ({ darkMode, setDarkMode }) => {
           Words of Wisdom
         </Link>
       </div>
+
       {/* Desktop Navigation */}
       <nav className='hidden md:flex space-x-4 items-center'>
         {MENU_ITEMS.map((item) => (
@@ -41,6 +42,7 @@ const Header: React.FC<IHeaderProps> = ({ darkMode, setDarkMode }) => {
         ))}
         <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
       </nav>
+
       {/* Mobile Menu Button */}
       <div className='md:hidden'>
         <button
@@ -51,6 +53,7 @@ const Header: React.FC<IHeaderProps> = ({ darkMode, setDarkMode }) => {
           {isMobileMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
         </button>
       </div>
+
       {/* Mobile Dropdown Menu */}
       {isMobileMenuOpen && (
         <div className='absolute top-full right-4 bg-blue-600 rounded-md shadow-lg w-48 mt-2 z-50'>
