@@ -202,13 +202,13 @@ function range(
 }
 
 /** Indices of the quotes from 0 to lenght - 1 */
-const indicesIdentity = range(quotesData.length);
+export const indicesIdentity = range(quotesData.length);
 /** Indices of the quotes from length - 1 to 0 */
-const indicesReverse = range(quotesData.length - 1, -1, -1);
+export const indicesReverse = range(quotesData.length - 1, -1, -1);
 /** Indices of the quotes in random order */
-const indicesRandom = range(quotesData.length, undefined, 1, true);
+export const indicesRandom = range(quotesData.length, undefined, 1, true);
 /** Indices of the quotes in alphabetical order, based on author and then source */
-const indicesAlphabetical = indicesIdentity.slice().sort((a, b) => {
+export const indicesAlphabetical = indicesIdentity.slice().sort((a, b) => {
   const authorCompare = quotesData[a].author.localeCompare(
     quotesData[b].author
   );
@@ -217,4 +217,3 @@ const indicesAlphabetical = indicesIdentity.slice().sort((a, b) => {
 });
 
 export default quotesData;
-export { indicesIdentity, indicesReverse, indicesRandom, indicesAlphabetical };
