@@ -10,6 +10,16 @@
   --accent-color-hover: #005ac1;
 }
 
+/* Light mode */
+body.light-mode {
+  --background-color: #ffffff;
+  --secondary-background-color: #e8e8e8;
+  --tertiary-background-color: #c3c3c3;
+  --text-color: #363636;
+  --accent-color: #3b7ce4;
+  --accent-color-hover: #508def;
+}
+
 body {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -22,16 +32,6 @@ body {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-}
-
-/* Light mode */
-body.light-mode {
-  --background-color: #ffffff;
-  --secondary-background-color: #e8e8e8;
-  --tertiary-background-color: #c3c3c3;
-  --text-color: #363636;
-  --accent-color: #3b7ce4;
-  --accent-color-hover: #508def;
 }
 
 /* Additional custom styles can go here */
