@@ -52,10 +52,10 @@ body {
   background-color: var(--tertiary-background-color);
 }
 
-@utility background-accent-color {
+@utility accent-color-background {
   background-color: var(--accent-color);
 }
-@utility background-accent-color-hover {
+@utility accent-color-background-hover {
   background-color: var(--accent-color-hover);
 }
 
@@ -80,7 +80,7 @@ body {
   @apply py-2 px-4 rounded cursor-pointer w-fit;
 }
 .primary-button {
-  @apply button-shared text-white background-accent-color hover:background-accent-color-hover;
+  @apply button-shared text-white accent-color-background hover:accent-color-background-hover;
 }
 
 .secondary-button {
