@@ -33,12 +33,10 @@ const Quote = ({ shuffle = false, testMode = false }: ITestProps) => {
   const curQuote = quotes[indexMap.get(currentIndex) || 0];
 
   const goNext = () => {
-    // setCurrentIndex((currentIndex + 1) % quotes.length);
     incrementIndex();
     setRevealed(!testMode);
   };
   const goPrev = () => {
-    // setCurrentIndex((currentIndex - 1 + quotes.length) % quotes.length);
     decrementIndex();
     setRevealed(!testMode);
   };
