@@ -215,9 +215,6 @@ const quoteIndicesIdentity = range(quotesData.length);
 /** Indices of the quotes from length - 1 to 0 */
 const quoteIndicesReverse = range(quotesData.length - 1, -1, -1);
 
-/** Indices of the quotes in random order */
-const quoteIndicesRandom = range(quotesData.length, undefined, 1, true);
-
 /** Indices of the quotes in alphabetical order, based on author and then source */
 const quoteIndicesAlphabetical = quoteIndicesIdentity.slice().sort((a, b) => {
   const authorCompare = quotesData[a].author.localeCompare(
@@ -228,17 +225,25 @@ const quoteIndicesAlphabetical = quoteIndicesIdentity.slice().sort((a, b) => {
 });
 
 export type SortOrder = 'newest' | 'alphabetical' | 'oldest' | 'random';
+type ConstantSortOrder = 'newest' | 'oldest' | 'alphabetical';
 
-const quoteIndices: { [key in SortOrder]: number[] } = {
+const quoteIndices: { [key in ConstantSortOrder]: number[] } = {
   newest: quoteIndicesReverse,
   oldest: quoteIndicesIdentity,
   alphabetical: quoteIndicesAlphabetical,
-  random: quoteIndicesRandom,
 };
 
-const sortQuotesCache = new Map<SortOrder, IQuote[]>();
+const sortQuotesCache = new Map<ConstantSortOrder, IQuote[]>();
 
+/** Sorts the quotes based on the given order. Note that all orders are static
+ * and cached except for 'random', which is recalculated each time. */
 export const sortQuotes = (order: SortOrder): IQuote[] => {
+  if (order === 'random') {
+    return range(quotesData.length, undefined, 1, true).map(
+      (idx) => quotesData[idx]
+    );
+  }
+
   if (sortQuotesCache.has(order)) {
     return sortQuotesCache.get(order)!;
   }
