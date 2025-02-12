@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import QuoteCard from '../components/QuoteCard';
 import { useAppContext } from 'contexts/AppContextProvider';
+import { SortOrder } from 'data/quotes';
 
 const Quotes = () => {
   const { query, setQuery, sort, setSort, sortedFilteredQuotes } =
@@ -26,15 +27,7 @@ const Quotes = () => {
           <select
             id='sort'
             value={sort}
-            onChange={(e) =>
-              setSort(
-                e.target.value as
-                  | 'newest'
-                  | 'alphabetical'
-                  | 'oldest'
-                  | 'random'
-              )
-            }
+            onChange={(e) => setSort(e.target.value as SortOrder)}
             className='input-default'
           >
             <option value='newest'>Added (Newest)</option>
