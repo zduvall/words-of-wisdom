@@ -59,6 +59,9 @@ const Quote = ({ testMode = false }: ITestProps) => {
           Next
         </button>
       </div>
+      <p className='self-center text-xs text-gray-400'>
+        Ordered by selection and filter in home screen
+      </p>
     </div>
   );
 };
