@@ -14,7 +14,7 @@ const Quotes = () => {
       {/* Search Input */}
       <input
         type='text'
-        className='border border-gray-300 rounded px-3 py-2 mb-4 w-full focus:outline-none focus:ring-2 focus:ring-blue-500' // Input
+        className='input-default mb-4 w-full' // Input
         placeholder='Search by author or keyword...'
         value={query}
         onChange={(e) => setQuery(e.target.value)}
@@ -36,7 +36,7 @@ const Quotes = () => {
               e.target.value as 'newest' | 'alphabetical' | 'oldest' | 'random'
             )
           }
-          className='border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+          className='input-default'
         >
           <option value='newest'>Newest</option>
           <option value='alphabetical'>Alphabetical</option>
