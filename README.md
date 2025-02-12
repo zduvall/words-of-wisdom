@@ -25,13 +25,33 @@
 
 ## Deploying to GitHub Pages
 
-This app is configured for GitHub Pages:
+**1. Build Your App for Production**
 
-- The Vite config sets the base path to `/words-of-wisdom/`.
-- To build the project, run:
+First, build your app to optimize it and place all necessary files in the `dist` folder. Run this command in your project root:
 
-  ```bash
-  npm run build
-  ```
+```bash
+npm run build
+```
 
-- Deploy the contents of the generated `dist` folder to GitHub Pages (for example, using the [gh-pages](https://www.npmjs.com/package/gh-pages) package or your preferred method).
+**2. Stage and Commit the Built Files**
+
+After the build is complete, you'll have a `dist` folder in your project. Stage and commit this entire `dist` folder to your `main` branch. Git will recognize the new `dist` folder (or changes within it if you've deployed before).
+
+```bash
+git add dist
+git commit -m "Deploy to GitHub Pages"
+git push
+```
+
+**3. Configure GitHub Pages in Repository Settings**
+
+Now, instruct GitHub Pages to serve your site from the `dist` folder within your `main` branch:
+
+1.  Go to your GitHub repository for "words-of-wisdom".
+2.  Click on **"Settings"** at the top of the page.
+3.  In the left sidebar, click on **"Pages"**.
+4.  Under the "Build and deployment" section:
+    - For **"Source"**, choose **"Deploy from a branch"**.
+    - For **"Branch"**, select **"main"**.
+    - Crucially, for **"Folder"**, select **`/dist`**. This tells GitHub Pages to look inside the `dist` folder on your `main` branch for the website files.
+5.  Click **"Save"**.
