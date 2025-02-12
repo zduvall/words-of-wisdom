@@ -16,12 +16,12 @@ const Quotes = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      {sortedFilteredQuotes.map((q, idx) => (
-        <div key={idx} className='mb-4'>
+      {sortedFilteredQuotes.map((q) => (
+        <div key={q.quote} className='mb-4'>
           {/* Margin between quote cards */}
           <QuoteCard data={q} reveal={true} />
           <Link
-            to={`/quotes/${idx}`}
+            to={`/quotes/${q.originalIndex}`}
             className='accent-background-hover text-white font-bold py-2 px-4 rounded text-sm mt-2 inline-block' // Link button
           >
             View
