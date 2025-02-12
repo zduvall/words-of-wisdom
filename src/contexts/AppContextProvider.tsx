@@ -35,6 +35,7 @@ export default function AppContextProvider({ children }: IProps) {
   );
 
   useEffect(() => {
+    // I have dark mode as the default, that's why light-mode is the class being toggled.
     document.body.classList.toggle('light-mode', !darkMode);
     localStorage.setItem('darkMode', darkMode.toString());
   }, [darkMode]);
