@@ -24,7 +24,7 @@ const Quotes = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      {quotesData.map((q, idx) => (
+      {filteredQuotes.map((q, idx) => (
         <div key={idx} className='mb-4'>
           {/* Margin between quote cards */}
           <QuoteCard data={q} reveal={true} />
