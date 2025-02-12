@@ -24,7 +24,7 @@ const Quotes = () => {
       <div className='flex flex-col md:flex-row md:items-center mb-4'>
         <label
           htmlFor='sort'
-          className='mb-2 md:mb-0 md:mr-2 text-sm font-medium text-gray-700'
+          className='mb-2 md:mb-0 md:mr-2 text-sm font-medium'
         >
           Sort by:
         </label>
