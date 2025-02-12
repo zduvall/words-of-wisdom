@@ -25,8 +25,9 @@ const QuoteCard = ({ data, reveal = true, onToggle }: IQuoteCardProps) => {
         <>
           <p className='text-lg mb-2 whitespace-pre-line'>“{data.quote}”</p>
           <div className='flex gap-2'>
-            <p className='text-base italic mb-4'>— {data.author},</p>
-            <p className='text-base italic mb-2'>{data.source}</p>
+            <p className='text-base italic mb-4'>
+              — {data.author}, {data.source}
+            </p>
           </div>
           {data.hint && (
             <p className='text-sm text-gray-500'>Hint: {data.hint}</p>
