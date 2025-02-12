@@ -1,11 +1,16 @@
-export interface IQuote {
+export interface IQuotePartial {
   quote: string;
   author: string;
   source: string;
   hint: string;
 }
 
-const quotesData: IQuote[] = [
+export interface IQuote extends IQuotePartial {
+  originalIndex: number;
+}
+
+/** All quotes before adding in originalIndex */
+const quotesDataPartial: IQuotePartial[] = [
   {
     quote:
       'Wherefore, my beloved brethren, pray unto the Father with all the energy of heart, that ye may be filled with this love, which he hath bestowed upon all who are true followers of his Son, Jesus Christ; that ye may become the sons of God; that when he shall appear we shall be like him, for we shall see him as he is; that we may have this hope; that we may be purified even as he is pure. Amen.',
@@ -167,6 +172,11 @@ const quotesData: IQuote[] = [
     hint: 'Eternity is retrospective',
   },
 ];
+
+const quotesData: IQuote[] = quotesDataPartial.map((quote, idx) => ({
+  ...quote,
+  originalIndex: idx,
+}));
 
 export default quotesData;
 
