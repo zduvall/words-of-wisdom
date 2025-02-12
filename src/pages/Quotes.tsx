@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import QuoteCard from '../components/QuoteCard';
-import quotesData, { IQuote } from '../data/quotes';
+import quotesData, { SortOrder } from '../data/quotes';
 
 const Quotes = () => {
   const [query, setQuery] = useState<string>('');
+  const [sort, setSort] = useState<SortOrder>('newest');
 
   // Filter quotes by any field.
   const filteredQuotes = quotesData.filter((q) =>
