@@ -8,7 +8,10 @@ const Quotes = () => {
 
   return (
     <div className='container mx-auto p-4'>
-      <h1 className='text-3xl font-bold mb-4'>All Quotes</h1> {/* Title */}
+      {/* Title */}
+      <h1 className='text-3xl font-bold mb-4'>All Quotes</h1>
+
+      {/* Search Input */}
       <input
         type='text'
         className='border border-gray-300 rounded px-3 py-2 mb-4 w-full focus:outline-none focus:ring-2 focus:ring-blue-500' // Input
@@ -18,7 +21,6 @@ const Quotes = () => {
       />
       {sortedFilteredQuotes.map((q) => (
         <div key={q.originalIndex} className='mb-4'>
-          {/* Margin between quote cards */}
           <QuoteCard data={q} reveal={true} />
           <Link
             to={`/quotes/${q.originalIndex}`}
