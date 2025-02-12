@@ -52,10 +52,10 @@ body {
   background-color: var(--tertiary-background-color);
 }
 
-@utility accent-background {
+@utility background-accent-color {
   background-color: var(--accent-color);
 }
-@utility accent-background-hover {
+@utility background-accent-color-hover {
   background-color: var(--accent-color-hover);
 }
 
@@ -77,7 +77,7 @@ body {
 }
 
 .primary-button {
-  @apply button-shared text-white accent-background hover:accent-background-hover;
+  @apply button-shared text-white background-accent-color hover:background-accent-color-hover;
 }
 
 .secondary-button {
