@@ -118,6 +118,13 @@ const quotesData: Quote[] = [
     source: 'The Alchemist, 1988',
     hint: 'Fear of suffering',
   },
+  {
+    quote:
+      "It's the possibility of having a dream come true that makes life interesting",
+    author: 'Paulo Coelho',
+    source: 'The Alchemist, 1988',
+    hint: 'Makes life interesting',
+  },
 ];
 
 export default quotesData;
