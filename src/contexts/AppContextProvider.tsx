@@ -6,8 +6,8 @@ interface IAppContext {
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
   query: string;
   setQuery: React.Dispatch<React.SetStateAction<string>>;
-  sort: TSortOrder;
-  setSort: React.Dispatch<React.SetStateAction<TSortOrder>>;
+  sortOrder: TSortOrder;
+  setSortOrder: React.Dispatch<React.SetStateAction<TSortOrder>>;
   sortedFilteredQuotes: ReturnType<typeof sortedQuotes>;
 }
 
@@ -16,8 +16,8 @@ const AppContext = createContext<IAppContext>({
   setDarkMode: () => {},
   query: '',
   setQuery: () => {},
-  sort: 'newest',
-  setSort: () => {},
+  sortOrder: 'newest',
+  setSortOrder: () => {},
   sortedFilteredQuotes: [],
 });
 
@@ -43,9 +43,9 @@ export default function AppContextProvider({ children }: IProps) {
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Quotes
   const [query, setQuery] = useState<string>('');
-  const [sort, setSort] = useState<TSortOrder>('newest');
+  const [sortOrder, setSortOrder] = useState<TSortOrder>('newest');
 
-  const sortedFilteredQuotes = sortedQuotes(sort).filter((q) =>
+  const sortedFilteredQuotes = sortedQuotes(sortOrder).filter((q) =>
     Object.values(q).some((val) => {
       // skip checking values in Quotes that are not strings, such as originalIndex.
       if (typeof val !== 'string') return false;
@@ -60,8 +60,8 @@ export default function AppContextProvider({ children }: IProps) {
         setDarkMode,
         query,
         setQuery,
-        sort,
-        setSort,
+        sortOrder,
+        setSortOrder,
         sortedFilteredQuotes,
       }}
     >

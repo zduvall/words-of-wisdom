@@ -4,7 +4,7 @@ import { useAppContext } from 'contexts/AppContextProvider';
 import { TSortOrder } from 'data/quotes';
 
 const Quotes = () => {
-  const { query, setQuery, sort, setSort, sortedFilteredQuotes } =
+  const { query, setQuery, sortOrder, setSortOrder, sortedFilteredQuotes } =
     useAppContext();
 
   return (
@@ -25,9 +25,8 @@ const Quotes = () => {
         {/* Sort Dropdown */}
         <div className='flex flex-col md:flex-row md:items-center'>
           <select
-            id='sort'
-            value={sort}
-            onChange={(e) => setSort(e.target.value as TSortOrder)}
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value as TSortOrder)}
             className='input-default'
           >
             <option value='newest'>Added (Newest)</option>
