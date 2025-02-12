@@ -43,9 +43,7 @@ const Quote = ({ shuffle = false, testMode = false }: ITestProps) => {
 
   return (
     <div className='container mx-auto p-4'>
-      {/* Container and padding */}
       <h1 className='text-3xl font-bold mb-4'>Test Your Memory</h1>{' '}
-      {/* Title */}
       {curQuote && (
         <QuoteCard
           data={curQuote}
