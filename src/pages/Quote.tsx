@@ -152,14 +152,7 @@ function useIndexFromPath({
   const location = useLocation();
   const navigate = useNavigate();
 
-  const getIndexFromPath = useCallback((): number => {
-    const pathSegments = location.pathname.split('/');
-    const lastSegment = pathSegments[pathSegments.length - 1];
-    const parsedIndex = parseInt(lastSegment, 10);
-    return isNaN(parsedIndex) ? initialIndex : parsedIndex;
-  }, [initialIndex, location.pathname]);
-
-  const currentIndex = getIndexFromPath();
+  const currentIndex = getIndexFromPath(initialIndex);
 
   const updateIndex = useCallback(
     (newIndex: number) => {
@@ -203,3 +196,10 @@ function useIndexFromPath({
     decrementIndex,
   };
 }
+
+const getIndexFromPath = (defaultIndex: number): number => {
+  const pathSegments = location.pathname.split('/');
+  const lastSegment = pathSegments[pathSegments.length - 1];
+  const parsedIndex = parseInt(lastSegment, 10);
+  return isNaN(parsedIndex) ? defaultIndex : parsedIndex;
+};
