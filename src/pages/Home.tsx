@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import QuoteCard, { IQuote } from '../components/QuoteCard';
-import quotesData from '../data/quotes.json';
+import quotesData from '../data/quotes';
 
 const Home = () => {
   const quotes: IQuote[] = quotesData;

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import quotesData from '../data/quotes.json';
+import quotesData from '../data/quotes';
 import QuoteCard, { IQuote } from '../components/QuoteCard';
 import { useLocation, useNavigate } from 'react-router-dom';
 
