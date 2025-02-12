@@ -41,3 +41,9 @@ Run this command in project root:
 ```bash
 npm run deploy
 ```
+
+This command:
+
+- Builds the React app for production, creating an optimized `dist` folder.
+- Prepares for GitHub Pages deployment by creating a `404.html` file (necessary for handling client-side routing in single-page apps on GitHub Pages, ensuring proper navigation even for non-root paths). See also [this article](https://dev.to/lico/handling-404-error-in-spa-deployed-on-github-pages-246p).
+- Deploys the contents of the `dist` folder to the gh-pages branch of your repository, making your app live on GitHub Pages.
