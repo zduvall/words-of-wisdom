@@ -76,6 +76,20 @@ const quotesData: Quote[] = [
     source: 'Interview with Charlie Rose, 1994', // https://www.youtube.com/watch?v=djoyd46TVVc
     hint: 'Information vs wonder',
   },
+  {
+    quote:
+      'The secret of happiness is this: let your interests be as wide as possible, and let your reactions to the things and persons that interest you be as far as possible friendly rather than hostile.',
+    author: 'Bertrand Russell',
+    source: 'The Conquest of Happiness, 1930',
+    hint: 'The secret of happiness',
+  },
+  {
+    quote:
+      '…To like many people spontaneously and without effort is perhaps the greatest of all sources of personal happiness.',
+    author: 'Bertrand Russell',
+    source: 'The Conquest of Happiness, 1930',
+    hint: 'Greatest source of personal happiness',
+  },
 ];
 
 export default quotesData;
