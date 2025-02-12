@@ -46,22 +46,16 @@ const Quote = ({ testMode = false }: ITestProps) => {
           onToggle={testMode ? () => setRevealed((prev) => !prev) : undefined}
         />
       )}
-      <div className='flex justify-center'>
+      <div className='flex justify-center gap-2'>
         {/* Button container */}
-        <button
-          className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-2 cursor-pointer' // Previous button
-          onClick={goPrev}
-        >
+        <button className='secondary-button' onClick={goPrev}>
           Previous
         </button>
         <span className='bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded'>
           {/* Quote count */}
           Quote {currSortedFilteredIndex + 1} of {sortedFilteredQuotes.length}
         </span>
-        <button
-          className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2 cursor-pointer' // Next button
-          onClick={goNext}
-        >
+        <button className='secondary-button' onClick={goNext}>
           Next
         </button>
       </div>
