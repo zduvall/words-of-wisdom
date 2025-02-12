@@ -4,18 +4,13 @@ import DarkModeToggle from './DarkModeToggle';
 import { CloseIcon, HamburgerIcon } from './Icons';
 import { DesktopNavLink, MobileNavLink } from './NavLinks';
 
-export interface IHeaderProps {
-  darkMode: boolean;
-  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 const MENU_ITEMS = [
   { title: 'Home', to: '/' },
   { title: 'Quotes', to: '/quotes' },
   { title: 'Test', to: '/test' },
 ];
 
-const Header: React.FC<IHeaderProps> = ({ darkMode, setDarkMode }) => {
+const Header = () => {
   const { dropdownRef, isMobileMenuOpen, setIsMobileMenuOpen } =
     useDropDownMenu();
 
@@ -33,7 +28,7 @@ const Header: React.FC<IHeaderProps> = ({ darkMode, setDarkMode }) => {
         {MENU_ITEMS.map((item) => (
           <DesktopNavLink key={item.to} item={item} />
         ))}
-        <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+        <DarkModeToggle />
       </nav>
 
       {/* Mobile Menu Button */}
@@ -61,7 +56,7 @@ const Header: React.FC<IHeaderProps> = ({ darkMode, setDarkMode }) => {
                 onClick={() => setIsMobileMenuOpen(false)}
               />
             ))}
-            <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+            <DarkModeToggle />
           </nav>
         </div>
       )}

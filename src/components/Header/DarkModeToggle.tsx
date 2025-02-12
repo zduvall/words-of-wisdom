@@ -1,7 +1,8 @@
-import { IHeaderProps } from '.';
+import { useAppContext } from 'contexts/AppContextProvider';
 
-// adapted from https://cruip.com/implementing-tailwind-css-dark-mode-toggle-with-no-flicker/
-const DarkModeToggle = ({ darkMode, setDarkMode }: IHeaderProps) => {
+const DarkModeToggle = () => {
+  const { darkMode, setDarkMode } = useAppContext();
+
   return (
     <div
       className='flex flex-col justify-center ml-3'
@@ -44,3 +45,5 @@ const DarkModeToggle = ({ darkMode, setDarkMode }: IHeaderProps) => {
 };
 
 export default DarkModeToggle;
+
+// adapted from https://cruip.com/implementing-tailwind-css-dark-mode-toggle-with-no-flicker/
