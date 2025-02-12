@@ -1,3 +1,4 @@
+import { SortOrder, sortQuotes as sortedQuotes } from '../data/quotes';
 import { createContext, useContext, useState } from 'react';
 
 const QuotesContext = createContext({});
@@ -9,5 +10,26 @@ interface IProps {
 }
 
 export default function AppContextProvider({ children }: IProps) {
-  return <QuotesContext.Provider value={{}}>{children}</QuotesContext.Provider>;
+  const [query, setQuery] = useState<string>('');
+  const [sort, setSort] = useState<SortOrder>('newest');
+
+  const sortedFilteredQuotes = sortedQuotes(sort).filter((q) =>
+    Object.values(q).some((val) =>
+      val.toLowerCase().includes(query.toLowerCase())
+    )
+  );
+
+  return (
+    <QuotesContext.Provider
+      value={{
+        query,
+        setQuery,
+        sort,
+        setSort,
+        sortedFilteredQuotes,
+      }}
+    >
+      {children}
+    </QuotesContext.Provider>
+  );
 }
