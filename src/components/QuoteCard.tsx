@@ -34,7 +34,7 @@ const QuoteCard = ({ data, reveal = true, onToggle }: IQuoteCardProps) => {
           )}
         </>
       ) : (
-        <p className='text-2xl font-bold'>{data.hint}</p>
+        <p className='text-lg'>{data.hint}</p>
       )}
     </div>
   );
