@@ -52,7 +52,7 @@ const Header: React.FC<IHeaderProps> = ({ darkMode, setDarkMode }) => {
 
       {/* Mobile Dropdown Menu */}
       {isMobileMenuOpen && (
-        <div className='absolute top-full right-4 bg-blue-600 rounded-md shadow-lg w-48 mt-2 z-50'>
+        <div className='accent-background absolute top-full right-4 rounded-md shadow-lg w-48 mt-2 z-50'>
           <nav className='flex flex-col py-2'>
             {MENU_ITEMS.map((item) => (
               <MobileNavLink
