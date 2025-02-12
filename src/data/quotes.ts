@@ -233,5 +233,5 @@ const quoteIndices: { [key in SortOrder]: number[] } = {
   random: quoteIndicesRandom,
 };
 
-const sortQuotes = (order: SortOrder): IQuote[] =>
+export const sortQuotes = (order: SortOrder): IQuote[] =>
   quoteIndices[order].map((idx) => quotesData[idx]);
