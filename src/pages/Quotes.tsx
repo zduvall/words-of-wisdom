@@ -17,7 +17,7 @@ const Quotes = () => {
         onChange={(e) => setQuery(e.target.value)}
       />
       {sortedFilteredQuotes.map((q) => (
-        <div key={q.quote} className='mb-4'>
+        <div key={q.originalIndex} className='mb-4'>
           {/* Margin between quote cards */}
           <QuoteCard data={q} reveal={true} />
           <Link
