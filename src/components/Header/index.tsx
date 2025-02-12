@@ -15,7 +15,7 @@ const Header = () => {
     useDropDownMenu();
 
   return (
-    <header className='accent-background p-4 flex justify-between items-center relative'>
+    <header className='background-accent-color p-4 flex justify-between items-center relative'>
       {/* Logo / Site Title */}
       <div>
         <Link to='/' className='text-white text-xl font-bold'>
@@ -46,7 +46,7 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div
           ref={dropdownRef}
-          className='accent-background absolute top-full right-4 rounded-md shadow-lg w-48 mt-2 z-50'
+          className='background-accent-color absolute top-full right-4 rounded-md shadow-lg w-48 mt-2 z-50'
         >
           <nav className='flex flex-col py-2'>
             {MENU_ITEMS.map((item) => (
