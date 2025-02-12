@@ -45,10 +45,10 @@ body {
   background-color: var(--tertiary-bg-color);
 }
 
-.hover-secondary-vs-bg-tertiary {
+.hover-bg-secondary-vs-bg-tertiary {
   background-color: var(--secondary-bg-color);
 }
-.hover-secondary-vs-bg-tertiary:hover {
+.hover-bg-secondary-vs-bg-tertiary:hover {
   background-color: var(--tertiary-bg-color);
 }
 

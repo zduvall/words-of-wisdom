@@ -11,7 +11,7 @@ const QuoteCard = ({ data, reveal = true, onToggle }: IQuoteCardProps) => {
     'p-6 rounded-lg shadow-md transition duration-300 bg-secondary';
   const classNames = `${staticClassNames} ${
     onToggle
-      ? 'cursor-pointer hover-secondary-vs-bg-tertiary'
+      ? 'cursor-pointer hover-bg-secondary-vs-bg-tertiary'
       : 'cursor-default'
   }`;
   return (
