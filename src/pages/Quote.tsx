@@ -37,7 +37,7 @@ const Quote = ({ testMode = false }: ITestProps) => {
   const title = testMode ? 'Test Your Memory' : 'Quote';
 
   return (
-    <div className='container mx-auto p-4 flex flex-col gap-4'>
+    <div className='page-container'>
       <h1 className='page-title'>{title}</h1>
       {quoteToShow && (
         <QuoteCard

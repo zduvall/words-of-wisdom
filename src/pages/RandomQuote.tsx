@@ -12,7 +12,7 @@ const RandomQuote = () => {
   };
 
   return (
-    <div className='container mx-auto p-4 flex flex-col gap-4'>
+    <div className='page-container'>
       <h1 className='page-title'>Random Quote</h1>
       <button
         className='accent-background-hover primary-button'

@@ -8,7 +8,7 @@ const Quotes = () => {
     useAppContext();
 
   return (
-    <div className='container mx-auto p-4 flex flex-col gap-4'>
+    <div className='page-container'>
       {/* Title */}
       <h1 className='page-title'>All Quotes</h1>
 

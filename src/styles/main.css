@@ -64,6 +64,11 @@ body {
 }
 
 /* Custom tailwind classes */
+
+.page-container {
+  @apply container mx-auto p-4 flex flex-col gap-4;
+}
+
 .page-title {
   @apply text-3xl font-bold;
 }
