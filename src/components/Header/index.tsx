@@ -37,13 +37,7 @@ const Header: React.FC<IHeaderProps> = ({ darkMode, setDarkMode }) => {
       {/* Desktop Navigation */}
       <nav className='hidden md:flex space-x-4 items-center'>
         {MENU_ITEMS.map((item) => (
-          <Link
-            key={item.to}
-            to={item.to}
-            className='text-white hover:underline'
-          >
-            {item.title}
-          </Link>
+          <DesktopNavLink key={item.to} to={item.to} title={item.title} />
         ))}
         <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
       </nav>
@@ -82,3 +76,13 @@ const Header: React.FC<IHeaderProps> = ({ darkMode, setDarkMode }) => {
 };
 
 export default Header;
+
+// ==============================
+// helpers
+// ==============================
+
+const DesktopNavLink = ({ to, title }: { to: string; title: string }) => (
+  <Link to={to} className='text-white hover:underline'>
+    {title}
+  </Link>
+);
