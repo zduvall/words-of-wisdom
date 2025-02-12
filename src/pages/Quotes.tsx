@@ -39,11 +39,11 @@ const Quotes = () => {
 
       {/* Quote List */}
       {sortedFilteredQuotes.map((q) => (
-        <div key={q.originalIndex}>
+        <div key={q.originalIndex} className='flex flex-col gap-2'>
           <QuoteCard data={q} reveal={true} />
           <Link
             to={`/quotes/${q.originalIndex}`}
-            className='accent-background-hover text-white font-bold py-2 px-4 rounded text-sm mt-2 inline-block' // Link button
+            className='accent-background-hover primary-button' // Link button
           >
             View
           </Link>
