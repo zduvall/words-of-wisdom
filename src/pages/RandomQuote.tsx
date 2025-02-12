@@ -15,7 +15,7 @@ const RandomQuote = () => {
     <div className='container mx-auto p-4 flex flex-col gap-4'>
       <h1 className='page-title'>Random Quote</h1>
       <button
-        className='accent-background-hover text-white font-bold py-2 px-4 rounded cursor-pointer w-fit' // Button styling
+        className='accent-background-hover primary-button'
         onClick={newRandomQuote}
       >
         New Random Quote
