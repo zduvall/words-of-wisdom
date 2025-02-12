@@ -69,6 +69,13 @@ const quotesData: Quote[] = [
     source: '2 Corinthians 12:7-10',
     hint: 'Thorn in the flesh',
   },
+  {
+    quote:
+      "I'm very concerned that our society is much more interested in information than wonder, in noise rather than silence… Real revelation comes through silence.",
+    author: 'Fred Rogers',
+    source: 'Interview with Charlie Rose, 1994', // https://www.youtube.com/watch?v=djoyd46TVVc
+    hint: 'Information vs wonder',
+  },
 ];
 
 export default quotesData;
