@@ -36,8 +36,8 @@ const Quote = ({ testMode = false }: ITestProps) => {
   const title = testMode ? 'Test Your Memory' : 'Quote';
 
   return (
-    <div className='container mx-auto p-4'>
-      <h1 className='text-3xl font-bold mb-4'>{title}</h1>
+    <div className='container mx-auto p-4 flex flex-col gap-4'>
+      <h1 className='text-3xl font-bold'>{title}</h1>
       {quoteToShow && (
         <QuoteCard
           data={quoteToShow}
@@ -45,7 +45,7 @@ const Quote = ({ testMode = false }: ITestProps) => {
           onToggle={testMode ? () => setRevealed((prev) => !prev) : undefined}
         />
       )}
-      <div className='flex justify-center mt-4'>
+      <div className='flex justify-center'>
         {/* Button container */}
         <button
           className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-2' // Previous button
