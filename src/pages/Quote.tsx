@@ -49,7 +49,7 @@ const Quote = ({ testMode = false }: ITestProps) => {
       <div className='flex justify-center'>
         {/* Button container */}
         <button
-          className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-2' // Previous button
+          className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-2 cursor-pointer' // Previous button
           onClick={goPrev}
         >
           Previous
@@ -59,7 +59,7 @@ const Quote = ({ testMode = false }: ITestProps) => {
           Quote {currSortedFilteredIndex + 1} of {sortedFilteredQuotes.length}
         </span>
         <button
-          className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2' // Next button
+          className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2 cursor-pointer' // Next button
           onClick={goNext}
         >
           Next
