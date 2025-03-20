@@ -33,6 +33,29 @@ const Quote = ({ testMode = false }: ITestProps) => {
     goPrev_();
     setRevealed(!testMode);
   };
+  const toggleRevealed = () => (testMode ? setRevealed((prev) => !prev) : null);
+
+  useEffect(() => {
+    // Key bindings
+    const controller = new AbortController();
+    document.addEventListener(
+      'keydown',
+      (e) => {
+        switch (e.code) {
+          case 'ArrowRight':
+            return goNext();
+          case 'ArrowLeft':
+            return goPrev();
+          case 'Space':
+            // prevent clicking next/previous if one is active when space is pressed
+            e.preventDefault();
+            return toggleRevealed();
+        }
+      },
+      controller
+    );
+    return () => controller.abort();
+  }, [goNext, goPrev, toggleRevealed]);
 
   const title = testMode ? 'Test Your Memory' : 'Quote';
 
@@ -43,7 +66,7 @@ const Quote = ({ testMode = false }: ITestProps) => {
         <QuoteCard
           data={quoteToShow}
           reveal={revealed}
-          onToggle={testMode ? () => setRevealed((prev) => !prev) : undefined}
+          onToggle={toggleRevealed}
         />
       )}
       <div className='flex justify-center gap-2'>
@@ -51,7 +74,7 @@ const Quote = ({ testMode = false }: ITestProps) => {
         <button className='secondary-button' onClick={goPrev}>
           Previous
         </button>
-        <span className='bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded'>
+        <span className='bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded min-w-40 text-center'>
           {/* Quote count */}
           Quote {currSortedFilteredIndex + 1} of {sortedFilteredQuotes.length}
         </span>
