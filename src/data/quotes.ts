@@ -179,6 +179,13 @@ const quotesDataPartial: IQuotePartial[] = [
     source: 'The Innocents Abroad / Roughing It',
     hint: 'Travel leads to broad views',
   },
+  {
+    quote:
+      "Ye cannot behold with your natural eyes, for the present time, the design of your God concerning those things which shall come hereafter, and the glory which shall follow after much tribulation.",
+    author: 'Jehovah',
+    source: 'Doctrine and Covenants 58:3',
+    hint: 'Glory after tribulation',
+  },
   // { // commented out b/c is really long
   //   quote:
   //     '...ye cannot in your present state understand eternity… But ye can get some likeness of it if ye say that both good and evil, when they are full grown, become retrospective. Not only this valley but all their earthly past will have been Heaven to those who are saved. Not only the twilight in that town, but all their life on Earth too, will then be seen by the damned to have been Hell. That is what mortals misunderstand. They say of some temporal suffering, "No future bliss can make up for it," not knowing that Heaven, once attained, will work backwards and turn even that agony into a glory. And of some sinful pleasure they say "Let me have but this and I\'ll take the consequences": little dreaming how damnation will spread back and back into their past and contaminate the pleasure of the sin. Both processes begin even before death. The good man\'s past begins to change so that his forgiven sins and remembered sorrows take on the quality of Heaven: the bad man\'s past already conforms to his badness and is filled only with dreariness. And that is why, at the end of all things, when the sun rises here and the twilight turns to blackness down there, the Blessed will say "We have never lived anywhere except in Heaven," and the Lost, "We were always in Hell." And both will speak truly.',
