@@ -6,7 +6,7 @@
 - An **Quotes** page with a searchable, sorted list of quotes, with an option of looking at one at a time
 - A **Test** page where you can toggle to reveal quote details and navigate through quotes in random order
 
-This site is live at [https://zduvall.github.io/words-of-wisdom/](https://zduvall.github.io/words-of-wisdom/)
+This site is live with my quotes at [https://zduvall.github.io/words-of-wisdom/](https://zduvall.github.io/words-of-wisdom/)
 
 ## Running Locally
 
