@@ -181,10 +181,17 @@ const quotesDataPartial: IQuotePartial[] = [
   },
   {
     quote:
-      "Ye cannot behold with your natural eyes, for the present time, the design of your God concerning those things which shall come hereafter, and the glory which shall follow after much tribulation.",
+      'Ye cannot behold with your natural eyes, for the present time, the design of your God concerning those things which shall come hereafter, and the glory which shall follow after much tribulation.',
     author: 'Jehovah',
     source: 'Doctrine and Covenants 58:3',
     hint: 'Glory after tribulation',
+  },
+  {
+    quote:
+      'Then will I sprinkle clean water upon you, and ye shall be clean: from all your filthiness, and from all your idols, will I cleanse you.\n\nA new heart also will I give you, and a new spirit will I put within you: and I will take away the stony heart out of your flesh, and I will give you an heart of flesh.\n\nAnd I will put my spirit within you, and cause you to walk in my statutes, and ye shall keep my judgments, and do them.',
+    author: 'Jehovah',
+    source: 'Ezekiel 36:25-27',
+    hint: 'I will give you a new heart of flesh',
   },
   // { // commented out b/c is really long
   //   quote:
@@ -209,7 +216,7 @@ function range(
   start: number,
   stop: number | undefined = undefined,
   step: number = 1,
-  randomize: boolean = false
+  randomize: boolean = false,
 ): number[] {
   if (stop === undefined) {
     stop = start;
@@ -247,7 +254,7 @@ const quoteIndicesReverse = range(quotesData.length - 1, -1, -1);
 /** Indices of the quotes in alphabetical order, based on author and then source */
 const quoteIndicesAlphabetical = quoteIndicesIdentity.slice().sort((a, b) => {
   const authorCompare = quotesData[a].author.localeCompare(
-    quotesData[b].author
+    quotesData[b].author,
   );
   if (authorCompare !== 0) return authorCompare;
   return quotesData[a].source.localeCompare(quotesData[b].source);
@@ -278,7 +285,7 @@ const sortQuotesCache = new Map<TSortOrderConstants, IQuote[]>();
 export const sortQuotes = (order: TSortOrder): IQuote[] => {
   if (order === 'random') {
     return range(quotesData.length, undefined, 1, true).map(
-      (idx) => quotesData[idx]
+      (idx) => quotesData[idx],
     );
   }
 
